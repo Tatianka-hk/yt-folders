@@ -1,0 +1,55 @@
+{
+    "auth": {
+        "labels": {
+            "email": "Email",
+            "password": "Password",
+            "confirm_password": "Confirm password"
+        },
+        "actions": {
+            "login": "Login",
+            "signup": "Sign up",
+            "login_google": "Login with Google",
+            "forgot": "Forgot password?"
+        },
+        "errors": {
+            "email_invalid": "Enter a valid email.",
+            "email_exists": "This email is already registered.",
+            "password_mismatch": "Passwords do not match.",
+            "password_invalid": "Password must have at least 1 letter and 1 number.",
+            "invalid_credentials": "Invalid email or password.",
+            "too_many_attempts": "Too many attempts. Please try again later.",
+            "something_went_wrong": "Something went wrong.",
+            "password_too_short": "Password must be at least 6 characters."
+        },
+        "success": {
+            "signup": "Account created.",
+            "login": "Login successful."
+        },
+        "info": {
+            "reset_sent": "If the email exists, we have sent reset instructions."
+        }
+    },
+    "dropdown": {
+        "edit": "Edit",
+        "delete": "Delete"
+    },
+    "menu": {
+        "buttons": {
+            "addFolder": "Add folder",
+            "logout": "Logout"
+        }
+    },
+    "folder": {
+        "edit": "Edit folder",
+        "create": "Create folder",
+        "name": "Folder name",
+        "nameError": "Folder name must be at least 3 characters",
+        "editSuccess": "Folder edited successfully",
+        "createSuccess": "Folder created successfully",
+        "selected": "Selected",
+        "cancel": "Cancel",
+        "copySuccess": "Flashcards copied successfully",
+        "selectFolder": "Select folder"
+    },
+    "failedToLoad": "Failed to load"
+}

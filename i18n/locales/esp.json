@@ -1,0 +1,49 @@
+{
+    "auth": {
+        "labels": {
+            "email": "Correo electrónico",
+            "password": "Contraseña",
+            "confirm_password": "Confirmar contraseña"
+        },
+        "actions": {
+            "login": "Iniciar sesión",
+            "signup": "Registrarse",
+            "login_google": "Iniciar sesión con Google",
+            "forgot": "¿Olvidaste tu contraseña?"
+        },
+        "errors": {
+            "email_invalid": "Introduce un correo electrónico válido.",
+            "email_exists": "Este correo electrónico ya está registrado.",
+            "password_mismatch": "Las contraseñas no coinciden.",
+            "invalid_credentials": "Correo electrónico o contraseña incorrectos.",
+            "too_many_attempts": "Demasiados intentos. Inténtalo más tarde.",
+            "something_went_wrong": "Algo salió mal.",
+            "password_invalid": "La contraseña debe tener al menos una letra y una cifra.",
+            "password_too_short": "La contraseña debe tener al menos 6 caracteres."
+        },
+        "success": {
+            "signup": "La cuenta ha sido creada.",
+            "login": "Has iniciado sesión correctamente."
+        },
+        "info": {
+            "reset_sent": "Si el correo electrónico existe, hemos enviado las instrucciones de restablecimiento."
+        }
+    },
+    "dropdown": {
+        "edit": "Editar",
+        "delete": "Eliminar"
+    },
+    "folder": {
+        "edit": "Editar la carpeta",
+        "create": "Crear una carpeta",
+        "name": "Nombre de la carpeta",
+        "nameError": "El nombre de la carpeta debe tener al menos 3 caracteres",
+        "editSuccess": "Carpeta editada correctamente",
+        "createSuccess": "Carpeta creada correctamente",
+        "selected": "Seleccionado",
+        "cancel": "Cancelar",
+        "copySuccess": "Tarjetas copiadas correctamente",
+        "selectFolder": "Selecciona una carpeta"
+    },
+    "failedToLoad": "No se pudo cargar"
+}

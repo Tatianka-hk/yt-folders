@@ -1,0 +1,54 @@
+{
+    "auth": {
+        "labels": {
+            "email": "Пошта",
+            "password": "Пароль",
+            "confirm_password": "Підтвердіть пароль"
+        },
+        "actions": {
+            "login": "Увійти",
+            "signup": "Зареєструватися",
+            "login_google": "Увійти з Google",
+            "forgot": "Забули пароль?"
+        },
+        "errors": {
+            "email_invalid": "Вкажіть коректний email.",
+            "email_exists": "Цей email уже зареєстрований.",
+            "password_mismatch": "Паролі не збігаються.",
+            "invalid_credentials": "Невірний email або пароль.",
+            "too_many_attempts": "Забагато спроб. Спробуйте пізніше.",
+            "something_went_wrong": "Щось пішло не так.",
+            "password_invalid": "Пароль повинен містити хоча б одну літеру та одну цифру."
+        },
+        "success": {
+            "signup": "Обліковий запис створено.",
+            "login": "Вхід виконано."
+        },
+        "info": {
+            "reset_sent": "Якщо email існує, ми надіслали інструкції з відновлення."
+        }
+    },
+    "dropdown": {
+        "edit": "Редагувати",
+        "delete": "Видалити"
+    },
+    "folder": {
+        "edit": "Редагувати папку",
+        "create": "Створити папку",
+        "name": "Назва папки",
+        "nameError": "Назва папки повинна містити не менше 3 символів",
+        "editSuccess": "Папка успішно редагована",
+        "createSuccess": "Папка успішно створена",
+        "selected": "Обрано",
+        "cancel": "Скасувати",
+        "copySuccess": "Флеш-картки успішно скопійовані",
+        "selectFolder": "Оберіть папку"
+    },
+    "menu": {
+        "buttons": {
+            "addFolder": "Додати папку",
+            "logout": "Вийти"
+        }
+    },
+    "failedToLoad": "Не вдалося завантажити"
+}

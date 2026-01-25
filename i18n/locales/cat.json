@@ -1,0 +1,55 @@
+{
+    "auth": {
+        "labels": {
+            "email": "Correu electrònic",
+            "password": "Contrasenya",
+            "confirm_password": "Confirma la contrasenya"
+        },
+        "actions": {
+            "login": "Inicia sessió",
+            "signup": "Registra't",
+            "login_google": "Inicia sessió amb Google",
+            "forgot": "Has oblidat la contrasenya?"
+        },
+        "errors": {
+            "email_invalid": "Introdueix un correu electrònic vàlid.",
+            "email_exists": "Aquest correu electrònic ja està registrat.",
+            "password_mismatch": "Les contrasenyes no coincideixen.",
+            "invalid_credentials": "Correu electrònic o contrasenya incorrectes.",
+            "too_many_attempts": "Massa intents. Torna-ho a provar més tard.",
+            "something_went_wrong": "Alguna cosa ha anat malament.",
+            "password_invalid": "La contrasenya ha de tenir almenys una lletra i una cifra.",
+            "password_too_short": "La contrasenya ha de tenir almenys 6 caracters."
+        },
+        "success": {
+            "signup": "El compte s'ha creat correctament.",
+            "login": "Has iniciat sessió correctament."
+        },
+        "info": {
+            "reset_sent": "Si el correu electrònic existeix, t'hem enviat instruccions per restablir la contrasenya."
+        }
+    },
+    "dropdown": {
+        "edit": "Editar",
+        "delete": "Eliminar"
+    },
+    "menu": {
+        "buttons": {
+            "addFolder": "Afegir una carpeta",
+            "logout": "Tancar sessió"
+        }
+    },
+    "folder": {
+        "edit": "Editar carpeta",
+        "create": "Crear carpeta",
+        "name": "Nom de la carpeta",
+        "nameError": "El nom de la carpeta ha de tenir almenys 3 caracters",
+        "editSuccess": "Carpeta editada correctament",
+        "createSuccess": "Carpeta creada correctament",
+        "selected": "Seleccionat",
+        "cancel": "Cancel·lar",
+        "copySuccess": "Targetes copiades correctament",
+        "selectFolder": "Selecciona una carpeta"
+    },
+    "failedToLoad": "No s'ha pogut carregar"
+}

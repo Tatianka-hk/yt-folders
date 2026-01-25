@@ -7,9 +7,11 @@
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
-        "postinstall": "nuxt prepare"
+        "postinstall": "nuxt prepare",
+        "prepare": "husky install"
     },
     "dependencies": {
+        "@nuxtjs/i18n": "^10.1.0",
         "jsonwebtoken": "^9.0.3",
         "mongoose": "^9.1.5",
         "nuxt": "^4.3.0",
@@ -17,6 +19,7 @@
         "prettier": "^3.8.1",
         "tailwindcss": "^4.1.18",
         "vue": "^3.5.27",
+        "vue-i18n": "^11.2.8",
         "vue-router": "^4.6.4"
     },
     "devDependencies": {
