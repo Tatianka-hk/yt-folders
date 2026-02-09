@@ -1,2 +1,7 @@
-export { default as Slogan } from './Slogan.vue'
+export { default as Logo } from './Logo.vue'
 export { default as SelectInput } from './SelectInput.vue'
+export { default as UserCircle } from './UserCircle.vue'
+export { default as Loading } from './Loading.vue'
+export { default as Field } from './Field.vue'
+export { default as Snackbar } from './Snackbar.vue'
+export { default as VButton } from './VButton.vue'

@@ -1,4 +1,7 @@
 <template>
     <NuxtPage />
-    <!-- <div class="w-screen h-screen bg-background">YOUTUBE CARPETS</div> -->
+    <Snackbar />
 </template>
+<script setup lang="ts">
+import { Snackbar } from '~/ui'
+</script>

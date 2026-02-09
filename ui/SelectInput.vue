@@ -7,7 +7,7 @@
             class="flex gap-1 py-2 px-4 cursor-pointer items-center justify-between"
             @click="onClick"
         >
-            {{ findSelectedOption(value) }}
+            {{ selectedLabel }}
             <IconChevronUp v-if="opened" />
             <IconChevronDown v-else />
         </div>
@@ -54,17 +54,14 @@ const props = withDefaults(defineProps<PropsType>(), {
     dialogMode: false,
 })
 
-const opened = ref<boolean>(false) //interesting
+const opened = ref<boolean>(false)
+
+const selectedLabel = computed(
+    () => props.options.find((o) => o.value === props.value)?.label ?? ''
+)
 
 const onClick = () => {
     opened.value = !opened.value
-}
-
-const findSelectedOption = (val: valueType): string => {
-    return (
-        props?.options?.find((option: OptionType) => option.value === val)
-            ?.label || ''
-    )
 }
 
 const onOptionClick = (val: valueType) => {
