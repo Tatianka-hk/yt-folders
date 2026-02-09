@@ -19,7 +19,7 @@
             />
             <Field
                 type="password"
-                name="сonfirm_password"
+                name="confirm_password"
                 :label="t('auth.labels.confirm_password')"
                 v-model="confirmPassword"
             />

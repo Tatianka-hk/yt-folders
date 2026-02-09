@@ -9,8 +9,8 @@ export default defineEventHandler(async (event) => {
         password: string
     }>(event)
 
-    const email = body.email.trim().toLowerCase()
-    const password = body.password.trim()
+    const email = body?.email?.trim()?.toLowerCase()
+    const password = body?.password?.trim()
 
     if (!email || !password) {
         throw createError({

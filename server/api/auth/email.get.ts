@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
         const user = await User.findOne({ _id: userId })
         if (!user) {
-            return createError({
+            throw createError({
                 statusCode: 404,
                 statusMessage: 'User not found',
             })

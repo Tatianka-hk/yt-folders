@@ -1,7 +1,7 @@
 <template>
     <div
-        class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
-        role="dialog"
+        class="fixed inset-0 flex items-center justify-center z-50 bg-black/50"
+        role="status"
         aria-label="Loading"
         aria-live="polite"
     >

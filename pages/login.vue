@@ -36,11 +36,11 @@ const { showSnackbar } = useSnackbar()
 const { t } = useI18n()
 const email = ref('')
 const password = ref('')
+const { fetchAuth } = useAuth()
 
 const onClick = () => {
     login({ email: email.value, password: password.value })
         .then(async () => {
-            const { fetchAuth } = useAuth()
             await fetchAuth()
         })
         .then(() => {

@@ -24,7 +24,7 @@ withDefaults(
         size?: Size
     }>(),
     {
-        class: '',
+        clasProps: '',
         size: Size.large,
     }
 )
