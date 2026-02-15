@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col">
-        <label v-if="label" :for="inputId" class="font-julius text-base mb-2">{{
+        <label v-if="label" :for="inputId" class="text-base mb-2 text-text">{{
             label
         }}</label>
 
@@ -11,7 +11,7 @@
             :value="modelValue"
             @input="onInput"
             v-bind="attrs"
-            class="w-full border border-text bg-blue py-2 px-4 "
+            class="w-full border border-text/30 bg-secondary py-2 px-4 text-text/60 rounded-lg"
         />
     </div>
 </template>

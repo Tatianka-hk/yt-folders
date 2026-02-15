@@ -1,8 +1,8 @@
-export interface UserI {
+export interface IUser {
     email?: string
 }
 
-export interface AuthCredentialsI {
+export interface IAuthCredentials {
     email: string
     password: string
 }
