@@ -29,11 +29,17 @@
             "reset_sent": "Si el correo electrónico existe, hemos enviado las instrucciones de restablecimiento."
         }
     },
+    "actions": {
+        "create": "Crear",
+        "clear": "Limpiar",
+        "done": "Hecho"
+    },
     "dropdown": {
         "edit": "Editar",
         "delete": "Eliminar"
     },
     "folder": {
+        "folders": "Carpetas",
         "edit": "Editar la carpeta",
         "create": "Crear una carpeta",
         "name": "Nombre de la carpeta",
@@ -43,7 +49,9 @@
         "selected": "Seleccionado",
         "cancel": "Cancelar",
         "copySuccess": "Tarjetas copiadas correctamente",
-        "selectFolder": "Selecciona una carpeta"
+        "selectFolder": "Selecciona una carpeta",
+        "chooseChannels": "Elige Youtube canales"
     },
-    "failedToLoad": "No se pudo cargar"
+    "failedToLoad": "No se pudo cargar",
+    "notFound": "Nada encontrado"
 }

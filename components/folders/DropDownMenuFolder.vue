@@ -24,7 +24,7 @@
                     "
                 >
                     <IconEdit class="w-[24px] h-[24px] min-w-[24px]" />
-                    <span class="text-2xl">{{ t('dropdown.edit') }}</span>
+                    <!-- <span class="text-2xl">{{ t('dropdown.edit') }}</span> -->
                 </button>
 
                 <button
@@ -34,7 +34,7 @@
                     @click="onDelete"
                 >
                     <IconDelete class="text-rose-600 w-[24px] h-[24px]" />
-                    <span class="text-2xl">{{ t('dropdown.delete') }}</span>
+                    <!-- <span class="text-2xl">{{ t('dropdown.delete') }}</span> -->
                 </button>
             </div>
             <FolderDialog

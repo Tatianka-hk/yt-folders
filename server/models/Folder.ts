@@ -4,7 +4,13 @@ const FolderSchema = new Schema(
     {
         userId: Schema.Types.ObjectId,
         name: String,
-        youtubeChannelsIDs: [String],
+        youtubeChannelsIDs: [
+            {
+                id: String,
+                title: String,
+                thumbnail: String,
+            },
+        ],
     },
     { bufferCommands: false }
 )

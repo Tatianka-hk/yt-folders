@@ -5,7 +5,7 @@
         classString="min-w-[200px] !px-[20px]"
     >
         <div class="flex flex-col w-full gap-4">
-            <Field v-model="folderName" label="Название папки" type="text" />
+            <Field v-model="folderName" :label="t('folder.name')" type="text" />
 
             <YotubeChannelsMultiselect
                 @update:query="(e) => (query = e)"
@@ -13,8 +13,12 @@
                 :options="results"
             />
 
-            <VButton @click="save" class="mt-4">
-                {{ t('button.saveInFolder') }}
+            <VButton @click="save" class="mt-4 !bg-secondary">
+                {{
+                    mode === FolderDialogEnum.CREATE
+                        ? t('folder.create')
+                        : t('folder.edit')
+                }}
             </VButton>
         </div>
     </Dialog>
@@ -52,15 +56,15 @@ const emit = defineEmits<{
 }>()
 
 const { query, results, loading, error } = useYoutubeChannelSearch({
-    debounceMs: 350,
+    debounceMs: 800,
     maxResults: 12,
-    minQueryLength: 2,
+    minQueryLength: 4,
     cacheTtlMs: 5 * 60_000,
 })
 
 const save = async () => {
     if (folderName.value?.length < 3) {
-        showSnackbar(t('folder.selectFolderError'), 'error')
+        showSnackbar(t('folder.nameError'), 'error')
         return
     }
     let res: IAction

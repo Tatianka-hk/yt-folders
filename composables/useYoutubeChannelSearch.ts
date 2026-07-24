@@ -13,7 +13,7 @@ type CacheEntry = { ts: number; data: IYoutubeChannelOption[] }
 export function useYoutubeChannelSearch(
     opts: UseYoutubeChannelSearchOpts = {}
 ) {
-    const debounceMs = opts.debounceMs ?? 300
+    const debounceMs = opts.debounceMs ?? 800
     const maxResults = opts.maxResults ?? 10
     const minQueryLength = opts.minQueryLength ?? 2
     const cacheTtlMs = opts.cacheTtlMs ?? 5 * 60_000 // 5 хв

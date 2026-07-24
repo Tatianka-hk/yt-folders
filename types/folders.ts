@@ -1,8 +1,14 @@
+export interface IChannel {
+    id: string
+    title: string
+    thumbnail: string
+}
+
 export interface IFolder {
     _id: string
     userID: string
     name: string
-    youtubeChannelsIDs: string[]
+    youtubeChannelsIDs: IChannel[]
 }
 
 export enum FolderActionsEnum {

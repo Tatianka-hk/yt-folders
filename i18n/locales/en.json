@@ -29,6 +29,11 @@
             "reset_sent": "If the email exists, we have sent reset instructions."
         }
     },
+    "actions": {
+        "create": "Create",
+        "clear": "Clear",
+        "done": "Done"
+    },
     "dropdown": {
         "edit": "Edit",
         "delete": "Delete"
@@ -40,6 +45,7 @@
         }
     },
     "folder": {
+        "folders": "Folders",
         "edit": "Edit folder",
         "create": "Create folder",
         "name": "Folder name",
@@ -49,7 +55,9 @@
         "selected": "Selected",
         "cancel": "Cancel",
         "copySuccess": "Flashcards copied successfully",
-        "selectFolder": "Select folder"
+        "selectFolder": "Select folder",
+        "chooseChannels": "Choose Youtube channels"
     },
-    "failedToLoad": "Failed to load"
+    "failedToLoad": "Failed to load",
+    "notFound": "Nothing found"
 }

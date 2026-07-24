@@ -2,7 +2,8 @@ import type { IVideo, IYoutubeChannelOption } from '~/types'
 import { apiRequest } from './api'
 
 const PREFIX = '/youtube'
-const apiKey = process.env.YOUTUBE_API_KEY
+// const apiKey = process.env.YOUTUBE_API_KEY
+const apiKey = 'AIzaSyA1O9scGTkoUUGIJoXdkwdl4IQty9YyEa8'
 
 export function getYoutubeChannels(): Promise<IYoutubeChannelOption[]> {
     return apiRequest({
@@ -15,6 +16,7 @@ export async function getYoutubeVideos(
     channelIds: string[],
     perChannel = 10
 ): Promise<IVideo[]> {
+    console.log('apiKey', apiKey)
     if (!channelIds.length) return []
 
     const uniq = Array.from(new Set(channelIds)).filter(Boolean)

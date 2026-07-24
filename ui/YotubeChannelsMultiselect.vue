@@ -2,16 +2,16 @@
     <div ref="rootRef" class="relative w-full max-w-xl min-w-xl">
         <!-- Input / selected chips -->
         <span class="text-text text-base mb-2">
-            Оберіть будь ласка Youtube</span
+            {{ t('folder.chooseChannels') }}</span
         >
         <div
             class="min-h-[44px] w-full rounded-lg border border-text/30 bg-secondary px-3 py-2 text-text flex flex-wrap gap-2 items-center cursor-text mt-2"
             :class="opened ? 'ring-2 ring-blue-400' : ''"
             @click="openAndFocus"
         >
-            <template v-if="selectedOptions.length">
+            <template v-if="modelValue.length">
                 <span
-                    v-for="ch in selectedOptions"
+                    v-for="ch in modelValue"
                     :key="ch.id"
                     class="flex items-center gap-2 rounded-full bg-white/70 border border-text/20 px-2 py-1 text-sm"
                 >
@@ -92,7 +92,7 @@
                     v-if="!filteredOptions.length"
                     class="px-3 py-4 text-text/60"
                 >
-                    Нічого не знайдено
+                    {{ t('notFound') }}
                 </div>
             </div>
 
@@ -105,7 +105,7 @@
                     class="text-sm text-text/70 hover:text-text"
                     @click="clearAll"
                 >
-                    Очистити
+                    {{ t('actions.clear') }}
                 </button>
 
                 <button
@@ -113,7 +113,7 @@
                     class="text-sm rounded-md bg-blue px-3 py-1 text-white hover:opacity-90"
                     @click="close"
                 >
-                    Готово
+                    {{ t('actions.done') }}
                 </button>
             </div>
         </div>
@@ -122,26 +122,25 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import type { IYoutubeChannelOption } from '@/types'
+import { useI18n } from 'vue-i18n'
+import type { IChannel, IYoutubeChannelOption } from '@/types'
 
 const props = defineProps<{
     options: IYoutubeChannelOption[]
-    modelValue: string[]
+    modelValue: IChannel[]
 }>()
 
 const emit = defineEmits<{
-    (e: 'update:modelValue', v: string[]): void
+    (e: 'update:modelValue', v: IChannel[]): void
     (e: 'update:query', v: string): void
 }>()
 
 const rootRef = ref<HTMLElement | null>(null)
 const inputRef = ref<HTMLInputElement | null>(null)
-
+const { t } = useI18n()
 const opened = ref(false)
 const query = ref('')
 const highlightedIndex = ref(0)
-
-const selectedOptions = ref<IYoutubeChannelOption[]>([])
 
 const filteredOptions = computed(() => {
     const q = query.value.trim().toLowerCase()
@@ -175,19 +174,18 @@ function close() {
 }
 
 function isSelected(id: string) {
-    return props.modelValue.includes(id)
+    props.modelValue.forEach((x) => {
+        if (x.id === id) return true
+    })
+    return false
 }
 
 function toggle(id: string) {
     const exists = isSelected(id)
     const next = exists
-        ? props.modelValue.filter((x) => x !== id)
-        : [...props.modelValue, id]
+        ? props.modelValue.filter((x) => x.id !== id)
+        : [...props.modelValue, props.options.find((o) => o.id === id)!]
     emit('update:modelValue', next)
-    selectedOptions.value = exists
-        ? selectedOptions.value.filter((o) => o.id !== id)
-        : [...selectedOptions.value, props.options.find((o) => o.id === id)]
-    selectedOptions.value = selectedOptions.value
     if (!exists) {
         query.value = ''
         emit('update:query', '')
@@ -198,14 +196,12 @@ function toggle(id: string) {
 function remove(id: string) {
     emit(
         'update:modelValue',
-        props.modelValue.filter((x) => x !== id)
+        props.modelValue.filter((x) => x.id !== id)
     )
-    selectedOptions.value = selectedOptions.value.filter((o) => o.id !== id)
 }
 
 function clearAll() {
     emit('update:modelValue', [])
-    selectedOptions.value = []
     queueMicrotask(() => inputRef.value?.focus())
 }
 

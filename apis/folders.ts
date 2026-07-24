@@ -1,11 +1,11 @@
-import type { IAction, IFolder } from '~/types'
+import type { IAction, IChannel, IFolder } from '~/types'
 import { apiRequest } from './api'
 
 const PREFIX = '/auth/folders'
 
 export function createFolder(
     name: string,
-    youtubeChannelsIDs: string[]
+    youtubeChannelsIDs: IChannel[]
 ): Promise<IAction> {
     return apiRequest({
         method: 'POST',
@@ -34,7 +34,7 @@ export function deleteFolder(id: string): Promise<IAction> {
 export function updateFolder(
     id: string,
     name: string,
-    youtubeChannelsIDs: string[]
+    youtubeChannelsIDs: IChannel[]
 ): Promise<IAction> {
     return apiRequest({
         method: 'PUT',

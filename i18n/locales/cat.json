@@ -39,7 +39,13 @@
             "logout": "Tancar sessió"
         }
     },
+    "actions": {
+        "create": "Crear",
+        "clear": "Esborrar",
+        "done": "Fet"
+    },
     "folder": {
+        "folders": "Carpetes",
         "edit": "Editar carpeta",
         "create": "Crear carpeta",
         "name": "Nom de la carpeta",
@@ -49,7 +55,9 @@
         "selected": "Seleccionat",
         "cancel": "Cancel·lar",
         "copySuccess": "Targetes copiades correctament",
-        "selectFolder": "Selecciona una carpeta"
+        "selectFolder": "Selecciona una carpeta",
+        "chooseChannels": "Elige Youtube canales"
     },
-    "failedToLoad": "No s'ha pogut carregar"
+    "failedToLoad": "No s'ha pogut carregar",
+    "notFound": "No s'ha trobat res"
 }

@@ -15,7 +15,7 @@
                 <button
                     :class="[
                         'absolute -top-2 -right-2 rounded-full p-1',
-                        mode === 'error' ? 'bg-primary' : 'bg-blue',
+                        mode === 'error' ? 'bg-primary' : 'bg-secondary',
                         isOpen ? 'block' : 'hidden',
                     ]"
                 >

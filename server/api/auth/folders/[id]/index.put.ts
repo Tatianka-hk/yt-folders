@@ -1,5 +1,6 @@
 import { Folder } from '~/server/models/Folder'
 import connectDB from '../../../../utils/db'
+import { IChannel } from '~/types'
 
 export default defineEventHandler(async (event) => {
     const folderID: string | undefined = getRouterParam(event, 'id')
@@ -11,7 +12,7 @@ export default defineEventHandler(async (event) => {
     }
     const body = await readBody<{
         name: string
-        youtubeChannelsIDs: string[]
+        youtubeChannelsIDs: IChannel[]
     }>(event)
 
     const name = body?.name?.trim()?.toLowerCase()
