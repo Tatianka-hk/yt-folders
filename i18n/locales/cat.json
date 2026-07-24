@@ -42,7 +42,8 @@
     "actions": {
         "create": "Crear",
         "clear": "Esborrar",
-        "done": "Fet"
+        "done": "Fet",
+        "search": "Cerca"
     },
     "folder": {
         "folders": "Carpetes",

@@ -1,50 +1,67 @@
 <template>
     <div ref="rootRef" class="relative w-full max-w-xl min-w-xl">
-        <!-- Input / selected chips -->
         <span class="text-text text-base mb-2">
-            {{ t('folder.chooseChannels') }}</span
-        >
-        <div
-            class="min-h-[44px] w-full rounded-lg border border-text/30 bg-secondary px-3 py-2 text-text flex flex-wrap gap-2 items-center cursor-text mt-2"
-            :class="opened ? 'ring-2 ring-blue-400' : ''"
-            @click="openAndFocus"
-        >
-            <template v-if="modelValue.length">
-                <span
-                    v-for="ch in modelValue"
-                    :key="ch.id"
-                    class="flex items-center gap-2 rounded-full bg-white/70 border border-text/20 px-2 py-1 text-sm"
-                >
-                    <img
-                        v-if="ch.thumbnail"
-                        :src="ch.thumbnail"
-                        alt=""
-                        class="h-5 w-5 rounded-full"
-                    />
-                    <span class="truncate max-w-[160px]">{{ ch.title }}</span>
+            {{ t('folder.chooseChannels') }}
+        </span>
 
-                    <button
-                        type="button"
-                        class="ml-1 text-text/70 hover:text-text"
-                        @click="remove(ch.id)"
-                        aria-label="remove"
-                    >
-                        ✕
-                    </button>
+        <!-- Selected channels -->
+        <div
+            v-if="modelValue.length"
+            class="w-full flex flex-wrap gap-2 items-center mt-2 mb-2"
+        >
+            <span
+                v-for="ch in modelValue"
+                :key="ch.id"
+                class="flex items-center gap-2 rounded-full bg-white/70 border border-text/20 px-2 py-1 text-sm"
+            >
+                <img
+                    v-if="ch.thumbnail"
+                    :src="ch.thumbnail"
+                    alt=""
+                    class="h-5 w-5 rounded-full"
+                />
+
+                <span class="truncate max-w-[160px]">
+                    {{ ch.title }}
                 </span>
-            </template>
+
+                <button
+                    type="button"
+                    class="ml-1 text-text/70 hover:text-text"
+                    aria-label="Remove channel"
+                    @click.stop="remove(ch.id)"
+                >
+                    ✕
+                </button>
+            </span>
+        </div>
+
+        <!-- Search input -->
+        <div
+            class="w-full rounded-lg border border-text/30 bg-secondary px-3 py-2 text-text flex items-center gap-2 mt-2"
+            :class="opened ? 'ring-2 ring-blue-400' : ''"
+        >
             <input
                 ref="inputRef"
                 v-model="query"
                 type="text"
-                class="flex-1 min-w-[120px] bg-transparent outline-none text-base"
+                class="flex-1 min-w-0 bg-transparent outline-none text-base"
+                :placeholder="t('actions.search')"
                 @focus="opened = true"
+                @keydown.enter.prevent="search"
                 @keydown.down.prevent="move(1)"
                 @keydown.up.prevent="move(-1)"
-                @keydown.enter.prevent="toggleHighlighted()"
-                @keydown.esc.prevent="close()"
-                @input="onInput"
+                @keydown.esc.prevent="close"
             />
+
+            <button
+                type="button"
+                class="shrink-0 rounded-md bg-blue px-4 py-2 text-sm text-white hover:opacity-90 disabled:opacity-50"
+                :disabled="!query.trim()"
+                @click="search"
+            >
+                {{ t('actions.search') }}
+            </button>
         </div>
 
         <!-- Dropdown -->
@@ -64,10 +81,11 @@
                 >
                     <input
                         type="checkbox"
-                        class="h-4 w-4"
+                        class="h-4 w-4 pointer-events-none"
                         :checked="isSelected(opt.id)"
-                        @change.prevent
+                        tabindex="-1"
                     />
+
                     <img
                         v-if="opt.thumbnail"
                         :src="opt.thumbnail"
@@ -76,11 +94,15 @@
                     />
 
                     <div class="flex-1 min-w-0">
-                        <div class="font-medium truncate">{{ opt.title }}</div>
+                        <div class="font-medium truncate">
+                            {{ opt.title }}
+                        </div>
+
                         <div class="text-sm text-text/60 flex gap-2">
-                            <span v-if="opt.handle" class="truncate">{{
-                                opt.handle
-                            }}</span>
+                            <span v-if="opt.handle" class="truncate">
+                                {{ opt.handle }}
+                            </span>
+
                             <span v-if="typeof opt.subscribers === 'number'">
                                 · {{ formatSubs(opt.subscribers) }} subs
                             </span>
@@ -89,14 +111,18 @@
                 </button>
 
                 <div
-                    v-if="!filteredOptions.length"
+                    v-if="hasSearched && !filteredOptions.length"
                     class="px-3 py-4 text-text/60"
                 >
                     {{ t('notFound') }}
                 </div>
+
+                <div v-else-if="!hasSearched" class="px-3 py-4 text-text/60">
+                    {{ t('folder.enterChannelAndSearch') }}
+                </div>
             </div>
 
-            <!-- Footer actions -->
+            <!-- Footer -->
             <div
                 class="border-t border-text/10 px-3 py-2 flex items-center justify-between"
             >
@@ -131,26 +157,38 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-    (e: 'update:modelValue', v: IChannel[]): void
-    (e: 'update:query', v: string): void
+    (e: 'update:modelValue', value: IChannel[]): void
+    (e: 'update:query', value: string): void
 }>()
+
+const { t } = useI18n()
 
 const rootRef = ref<HTMLElement | null>(null)
 const inputRef = ref<HTMLInputElement | null>(null)
-const { t } = useI18n()
+
 const opened = ref(false)
 const query = ref('')
+const searchQuery = ref('')
+const hasSearched = ref(false)
 const highlightedIndex = ref(0)
 
 const filteredOptions = computed(() => {
-    const q = query.value.trim().toLowerCase()
-    const list = props.options
+    if (!hasSearched.value) {
+        return []
+    }
 
-    if (!q) return list
+    const normalizedQuery = searchQuery.value.trim().toLowerCase()
 
-    return list.filter((o) => {
-        const hay = `${o.title} ${o.handle ?? ''}`.toLowerCase()
-        return hay.includes(q)
+    if (!normalizedQuery) {
+        return []
+    }
+
+    return props.options.filter((option) => {
+        const searchableText = [option.title, option.handle ?? '']
+            .join(' ')
+            .toLowerCase()
+
+        return searchableText.includes(normalizedQuery)
     })
 })
 
@@ -158,45 +196,63 @@ watch(filteredOptions, () => {
     highlightedIndex.value = 0
 })
 
-function openAndFocus() {
-    opened.value = true
-    queueMicrotask(() => inputRef.value?.focus())
-}
+function search() {
+    const normalizedQuery = query.value.trim()
 
-function onInput() {
-    emit('update:query', query.value)
+    if (!normalizedQuery) {
+        searchQuery.value = ''
+        hasSearched.value = false
+        emit('update:query', '')
+        return
+    }
+
+    searchQuery.value = normalizedQuery
+    hasSearched.value = true
+    opened.value = true
+    highlightedIndex.value = 0
+
+    emit('update:query', normalizedQuery)
 }
 
 function close() {
     opened.value = false
     query.value = ''
+    searchQuery.value = ''
+    hasSearched.value = false
     highlightedIndex.value = 0
+
+    emit('update:query', '')
 }
 
 function isSelected(id: string) {
-    props.modelValue.forEach((x) => {
-        if (x.id === id) return true
-    })
-    return false
+    return props.modelValue.some((channel) => channel.id === id)
 }
 
 function toggle(id: string) {
     const exists = isSelected(id)
-    const next = exists
-        ? props.modelValue.filter((x) => x.id !== id)
-        : [...props.modelValue, props.options.find((o) => o.id === id)!]
-    emit('update:modelValue', next)
-    if (!exists) {
-        query.value = ''
-        emit('update:query', '')
+
+    if (exists) {
+        emit(
+            'update:modelValue',
+            props.modelValue.filter((channel) => channel.id !== id)
+        )
+    } else {
+        const selectedOption = props.options.find((option) => option.id === id)
+
+        if (!selectedOption) {
+            return
+        }
+
+        emit('update:modelValue', [...props.modelValue, selectedOption])
     }
+
     queueMicrotask(() => inputRef.value?.focus())
 }
 
 function remove(id: string) {
     emit(
         'update:modelValue',
-        props.modelValue.filter((x) => x.id !== id)
+        props.modelValue.filter((channel) => channel.id !== id)
     )
 }
 
@@ -206,44 +262,51 @@ function clearAll() {
 }
 
 function move(delta: number) {
-    if (!opened.value) opened.value = true
-    const max = filteredOptions.value.length - 1
-    if (max < 0) return
+    if (!opened.value) {
+        opened.value = true
+    }
+
+    const maxIndex = filteredOptions.value.length - 1
+
+    if (maxIndex < 0) {
+        return
+    }
+
     highlightedIndex.value = Math.min(
-        max,
+        maxIndex,
         Math.max(0, highlightedIndex.value + delta)
     )
 }
 
-function toggleHighlighted() {
-    const opt = filteredOptions.value[highlightedIndex.value]
-    if (!opt) return
-    toggle(opt.id)
-}
+function onDocumentClick(event: MouseEvent) {
+    const rootElement = rootRef.value
 
-function onBackspace(e: KeyboardEvent) {
-    if (query.value.length) return
-    // якщо поле пусте — backspace видаляє останній чип
-    if (props.modelValue.length) {
-        const last = props.modelValue[props.modelValue.length - 1]
-        emit('update:modelValue', props.modelValue.slice(0, -1))
-        e.preventDefault()
-        queueMicrotask(() => inputRef.value?.focus())
+    if (!rootElement) {
+        return
+    }
+
+    if (event.target instanceof Node && !rootElement.contains(event.target)) {
+        close()
     }
 }
 
-function onDocumentClick(e: MouseEvent) {
-    const el = rootRef.value
-    if (!el) return
-    if (e.target instanceof Node && !el.contains(e.target)) close()
+function formatSubs(value: number) {
+    if (value >= 1_000_000) {
+        return `${(value / 1_000_000).toFixed(1)}M`
+    }
+
+    if (value >= 1_000) {
+        return `${(value / 1_000).toFixed(1)}K`
+    }
+
+    return String(value)
 }
 
-onMounted(() => document.addEventListener('click', onDocumentClick))
-onBeforeUnmount(() => document.removeEventListener('click', onDocumentClick))
+onMounted(() => {
+    document.addEventListener('click', onDocumentClick)
+})
 
-function formatSubs(n: number) {
-    if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`
-    if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`
-    return String(n)
-}
+onBeforeUnmount(() => {
+    document.removeEventListener('click', onDocumentClick)
+})
 </script>

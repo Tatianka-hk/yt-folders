@@ -32,7 +32,8 @@
     "actions": {
         "create": "Crear",
         "clear": "Limpiar",
-        "done": "Hecho"
+        "done": "Hecho",
+        "search": "Buscar"
     },
     "dropdown": {
         "edit": "Editar",
