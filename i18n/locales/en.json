@@ -51,6 +51,17 @@
                 "retry": "Try again",
                 "verifying": "Verifying...",
                 "login": "Log in"
+            },
+            "sent": {
+                "title": "Check your email",
+                "description": "We sent you an email with a verification link. Open the email and verify your email address."
+            },
+            "resend": {
+                "button": "Send email again",
+                "sending": "Sending...",
+                "available_in": "Send again in {seconds}s",
+                "success": "A new verification email has been sent.",
+                "error": "We could not send the email. Please try again."
             }
         }
     },

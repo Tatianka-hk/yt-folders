@@ -45,3 +45,11 @@ export function verifyEmail(token: string) {
         data: { token },
     })
 }
+
+export function resendVerification(data: { email: string; locale?: string }) {
+    return apiRequest({
+        method: 'POST',
+        url: `${PREFIX}/resend-verify-email`,
+        data: data,
+    })
+}

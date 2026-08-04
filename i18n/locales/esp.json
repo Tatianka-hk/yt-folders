@@ -51,6 +51,17 @@
                 "retry": "Intentarlo de nuevo",
                 "verifying": "Verificando...",
                 "login": "Iniciar sesión"
+            },
+            "sent": {
+                "title": "Revisa tu correo electrónico",
+                "description": "Te hemos enviado un correo con un enlace de verificación. Abre el correo y verifica tu dirección de correo electrónico."
+            },
+            "resend": {
+                "button": "Enviar el correo de nuevo",
+                "sending": "Enviando...",
+                "available_in": "Enviar de nuevo en {seconds} s",
+                "success": "Se ha enviado un nuevo correo de verificación.",
+                "error": "No se ha podido enviar el correo. Inténtalo de nuevo."
             }
         }
     },

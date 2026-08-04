@@ -2,42 +2,47 @@
     <div class="w-full flex flex-col items-center justify-center">
         <Logo class="mt-[80px] mb-[40px] mx-auto" />
 
-        <div
-            class="flex flex-col gap-4 mx-auto w-[700px] mb-[40px] w-[80%] lg:w-[700px] space-y-2"
-        >
-            <Field
-                type="email"
-                name="email"
-                :label="t('auth.labels.email')"
-                v-model="email"
-            />
-            <Field
-                type="password"
-                name="password"
-                :label="t('auth.labels.password')"
-                v-model="password"
-            />
-            <Field
-                type="password"
-                name="confirm_password"
-                :label="t('auth.labels.confirm_password')"
-                v-model="confirmPassword"
-            />
-        </div>
-        <VButton
-            :disabled="!email || !password || !confirmPassword || isLoading"
-            :onClick="onClick"
-        >
-            {{ t('auth.actions.signup') }}
-        </VButton>
+        <template v-if="etap === ETAP_ENUM.SIGNUP">
+            <div
+                class="flex flex-col gap-4 mx-auto w-[700px] mb-[40px] w-[80%] lg:w-[700px] space-y-2"
+            >
+                <Field
+                    type="email"
+                    name="email"
+                    :label="t('auth.labels.email')"
+                    v-model="email"
+                />
+                <Field
+                    type="password"
+                    name="password"
+                    :label="t('auth.labels.password')"
+                    v-model="password"
+                />
+                <Field
+                    type="password"
+                    name="confirm_password"
+                    :label="t('auth.labels.confirm_password')"
+                    v-model="confirmPassword"
+                />
+            </div>
+            <VButton
+                :disabled="!email || !password || !confirmPassword || isLoading"
+                :onClick="onClick"
+            >
+                {{ t('auth.actions.signup') }}
+            </VButton>
+        </template>
+        <template v-else>
+            <EndOfSignup :email="email" />
+        </template>
     </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { navigateTo } from 'nuxt/app'
 import { registerUser } from '~/apis/auth'
 import { Field, Logo, VButton } from '~/ui'
+import EndOfSignup from '~/components/auth/EndOfSignup.vue'
 import { useSnackbar } from '../composables/useSnackbar'
 const { showSnackbar } = useSnackbar()
 const { t, locale } = useI18n()
@@ -45,6 +50,11 @@ const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const isLoading = ref<boolean>(false)
+enum ETAP_ENUM {
+    SIGNUP = 'signup',
+    VERIFY = 'verify',
+}
+const etap = ref<ETAP_ENUM>(ETAP_ENUM.SIGNUP)
 
 function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -74,7 +84,7 @@ const onClick = () => {
         locale: locale.value,
     })
         .then(() => {
-            navigateTo('/login')
+            etap.value = ETAP_ENUM.VERIFY
         })
         .catch((err) => {
             showSnackbar(

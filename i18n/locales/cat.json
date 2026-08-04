@@ -51,6 +51,17 @@
                 "retry": "Tornar-ho a provar",
                 "verifying": "Verificant...",
                 "login": "Iniciar sessió"
+            },
+            "sent": {
+                "title": "Revisa el teu correu electrònic",
+                "description": "T'hem enviat un correu amb un enllaç de verificació. Obre el correu i verifica la teva adreça electrònica."
+            },
+            "resend": {
+                "button": "Tornar a enviar el correu",
+                "sending": "Enviant...",
+                "available_in": "Tornar a enviar d'aquí a {seconds} s",
+                "success": "S'ha enviat un nou correu de verificació.",
+                "error": "No s'ha pogut enviar el correu. Torna-ho a provar."
             }
         }
     },

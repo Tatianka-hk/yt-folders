@@ -1,6 +1,7 @@
 import { createHash, randomBytes } from 'node:crypto'
 import { Types } from 'mongoose'
 
+import { TOKEN_EXPIRES_MS } from '~/static/user'
 import { VerificationToken } from '../models/VerificationToken'
 import { sendVerificationEmail } from './send_email'
 
@@ -13,9 +14,7 @@ export const verifyEmail = async (
     const verificationToken = randomBytes(32).toString('hex')
 
     const verificationTokenHash = getTokenHash(verificationToken)
-    const verificationTokenExpiresAt = new Date(
-        Date.now() + 24 * 60 * 60 * 1000
-    )
+    const verificationTokenExpiresAt = new Date(Date.now() + TOKEN_EXPIRES_MS)
 
     await VerificationToken.create({
         userId,
