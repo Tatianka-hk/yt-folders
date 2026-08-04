@@ -112,5 +112,6 @@
             "expires": "Este enlace caduca en 24 horas.",
             "fallback": "Si el botón no funciona, copia y abre este enlace:"
         }
-    }
+    },
+    "somethingWentWrong": "Algo salió mal"
 }

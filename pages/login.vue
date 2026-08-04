@@ -18,9 +18,11 @@
                 v-model="password"
             />
         </div>
-        <VButton :disabled="!email || !password" :onClick="onClick">{{
-            t('auth.actions.login')
-        }}</VButton>
+        <VButton
+            :disabled="!email || !password || isLoading"
+            :onClick="onClick"
+            >{{ t('auth.actions.login') }}</VButton
+        >
         <PleaseVerifyEmail :email="email" v-if="notVerifiedEmail" />
     </div>
 </template>
@@ -43,8 +45,10 @@ const email = ref('')
 const password = ref('')
 const { fetchAuth } = useAuth()
 const notVerifiedEmail = ref<boolean>(false)
+const isLoading = ref<boolean>(false)
 
 const onClick = () => {
+    isLoading.value = true
     login({ email: email.value, password: password.value })
         .then(async () => {
             await fetchAuth()
@@ -59,6 +63,9 @@ const onClick = () => {
             } else {
                 showSnackbar(t(`auth.login.errors.${err.message}`))
             }
+        })
+        .finally(() => {
+            isLoading.value = false
         })
 }
 </script>

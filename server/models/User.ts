@@ -2,7 +2,12 @@ import { Schema, model } from 'mongoose'
 import { UserStatusEnum } from '~/static/user'
 const UserSchema = new Schema(
     {
-        email: String,
+        email: {
+            type: String,
+            unique: true,
+            required: true,
+            trim: true,
+        },
         password: String,
         createdAt: Date,
         emailStatus: {

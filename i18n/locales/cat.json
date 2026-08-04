@@ -118,5 +118,6 @@
             "expires": "Aquest enllaç caduca en 24 hores.",
             "fallback": "Si el botó no funciona, copia i obre aquest enllaç:"
         }
-    }
+    },
+    "somethingWentWrong": "Alguna cosa ha anat malament"
 }

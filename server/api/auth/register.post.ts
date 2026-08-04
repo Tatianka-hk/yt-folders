@@ -1,3 +1,5 @@
+import { isError } from 'h3'
+
 import { User } from '~/server/models/User'
 import { verifyEmail } from '~/server/utils/verify_email'
 import connectDB from '~/server/utils/db'
@@ -39,10 +41,14 @@ export default defineEventHandler(async (event) => {
             createdAt: new Date(),
         })
 
-        verifyEmail(newUser._id, email, locale, event)
+        await verifyEmail(newUser._id, email, locale, event)
 
         return { success: true, message: 'User registered' }
     } catch (err: any) {
+        if (isError(err)) {
+            throw err
+        }
+        console.error(err)
         throw createError({
             statusCode: 500,
             statusMessage: 'Server error',

@@ -118,5 +118,6 @@
             "expires": "This link expires in 24 hours.",
             "fallback": "If the button does not work, copy and open this link:"
         }
-    }
+    },
+    "somethingWentWrong": "Something went wrong"
 }

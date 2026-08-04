@@ -16,19 +16,26 @@ export const verifyEmail = async (
     const verificationTokenHash = getTokenHash(verificationToken)
     const verificationTokenExpiresAt = new Date(Date.now() + TOKEN_EXPIRES_MS)
 
-    await VerificationToken.create({
+    const tokenDocument = await VerificationToken.create({
         userId,
         token: verificationTokenHash,
 
         createdAt: new Date(),
         expiresAt: verificationTokenExpiresAt,
     })
-    await sendVerificationEmail({
-        email,
-        verificationToken: verificationToken,
-        locale,
-        event,
-    })
+    try {
+        await sendVerificationEmail({
+            email,
+            verificationToken: verificationToken,
+            locale,
+            event,
+        })
+    } catch (error) {
+        await VerificationToken.deleteOne({
+            _id: tokenDocument._id,
+        })
+        console.error(error)
+    }
 }
 
 export const getTokenHash = (token: string) => {

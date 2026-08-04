@@ -1,10 +1,11 @@
-import { createHash, randomBytes } from 'node:crypto'
+import { randomBytes } from 'node:crypto'
 
 import connectDB from '~/server/utils/db'
 import { User } from '~/server/models/User'
 import { VerificationToken } from '~/server/models/VerificationToken'
 import { sendVerificationEmail } from '~/server/utils/send_email'
 import { TOKEN_EXPIRES_MS, UserStatusEnum } from '~/static/user'
+import { getTokenHash } from '~/server/utils/verify_email'
 
 type ResendVerifyEmailBody = {
     email?: string
@@ -17,7 +18,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody<ResendVerifyEmailBody>(event)
 
     const normalizedEmail = body.email?.trim().toLowerCase()
-    const locale = body.locale
+    const locale = body.locale ?? 'en'
 
     if (!normalizedEmail) {
         throw createError({
