@@ -25,7 +25,7 @@
             />
         </div>
         <VButton
-            :disabled="!email || !password || !confirmPassword"
+            :disabled="!email || !password || !confirmPassword || isLoading"
             :onClick="onClick"
         >
             {{ t('auth.actions.signup') }}
@@ -44,6 +44,7 @@ const { t, locale } = useI18n()
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
+const isLoading = ref<boolean>(false)
 
 function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -66,13 +67,14 @@ const onClick = () => {
         showSnackbar(t('auth.errors.password_mismatch'), 'error')
         return
     }
+    isLoading.value = true
     registerUser({
         email: email.value,
         password: password.value,
         locale: locale.value,
     })
         .then(() => {
-            navigateTo('/home')
+            navigateTo('/login')
         })
         .catch((err) => {
             showSnackbar(
@@ -81,6 +83,9 @@ const onClick = () => {
                     : t('auth.errors.something_went_wrong'),
                 'error'
             )
+        })
+        .finally(() => {
+            isLoading.value = false
         })
 }
 </script>
