@@ -40,16 +40,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+
 import { registerUser } from '~/apis/auth'
 import { Field, Logo, VButton } from '~/ui'
 import EndOfSignup from '~/components/auth/EndOfSignup.vue'
 import { useSnackbar } from '../composables/useSnackbar'
+
 const { showSnackbar } = useSnackbar()
 const { t, locale } = useI18n()
+
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const isLoading = ref<boolean>(false)
+
 enum ETAP_ENUM {
     SIGNUP = 'signup',
     VERIFY = 'verify',

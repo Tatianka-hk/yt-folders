@@ -37,8 +37,8 @@ import { LOGIN_ERRORS } from '~/static/auth'
 import PleaseVerifyEmail from '~/components/auth/PleaseVerifyEmail.vue'
 
 const { showSnackbar } = useSnackbar()
-
 const { t } = useI18n()
+
 const email = ref('')
 const password = ref('')
 const { fetchAuth } = useAuth()
@@ -53,9 +53,10 @@ const onClick = () => {
             navigateTo('/home')
         })
         .catch((err) => {
-            showSnackbar(t(`auth.login.errors.${err.message}`))
             if (err.message === LOGIN_ERRORS.EMAIL_NOT_VERIFIED) {
                 notVerifiedEmail.value = true
+            } else {
+                showSnackbar(t(`auth.login.errors.${err.message}`))
             }
         })
 }
