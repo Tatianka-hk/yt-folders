@@ -50,6 +50,7 @@ const onClick = () => {
             await fetchAuth()
         })
         .then(() => {
+            console.log('here')
             navigateTo('/home')
         })
         .catch((err) => {
