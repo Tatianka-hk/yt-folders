@@ -85,5 +85,16 @@
         "chooseChannels": "Choose Youtube channels"
     },
     "failedToLoad": "Failed to load",
-    "notFound": "Nothing found"
+    "notFound": "Nothing found",
+    "email": {
+        "verify-email": {
+            "subject": "Verify your email",
+            "title": "Verify your email",
+            "welcome": "Welcome!",
+            "description": "Thank you for creating an account. Please confirm your email address.",
+            "button": "Verify email",
+            "expires": "This link expires in 24 hours.",
+            "fallback": "If the button does not work, copy and open this link:"
+        }
+    }
 }

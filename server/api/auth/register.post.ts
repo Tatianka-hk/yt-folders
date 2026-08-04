@@ -8,9 +8,11 @@ export default defineEventHandler(async (event) => {
         const body = await readBody<{
             email: string
             password: string
+            locale: string
         }>(event)
         const email = body?.email?.trim()?.toLowerCase()
         const password = body?.password?.trim()
+        const locale = body?.locale
 
         if (!email || !password) {
             throw createError({
@@ -37,7 +39,7 @@ export default defineEventHandler(async (event) => {
             createdAt: new Date(),
         })
 
-        verifyEmail(newUser._id, email, event)
+        verifyEmail(newUser._id, email, locale, event)
 
         return { success: true, message: 'User registered' }
     } catch (err: any) {

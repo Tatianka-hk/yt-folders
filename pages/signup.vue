@@ -40,7 +40,7 @@ import { registerUser } from '~/apis/auth'
 import { Field, Logo, VButton } from '~/ui'
 import { useSnackbar } from '../composables/useSnackbar'
 const { showSnackbar } = useSnackbar()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
@@ -66,7 +66,11 @@ const onClick = () => {
         showSnackbar(t('auth.errors.password_mismatch'), 'error')
         return
     }
-    registerUser({ email: email.value, password: password.value })
+    registerUser({
+        email: email.value,
+        password: password.value,
+        locale: locale.value,
+    })
         .then(() => {
             navigateTo('/home')
         })

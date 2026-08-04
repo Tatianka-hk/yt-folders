@@ -16,7 +16,6 @@ export async function getYoutubeVideos(
     channelIds: string[],
     perChannel = 10
 ): Promise<IVideo[]> {
-    console.log('apiKey', apiKey)
     if (!channelIds.length) return []
 
     const uniq = Array.from(new Set(channelIds)).filter(Boolean)

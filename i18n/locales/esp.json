@@ -79,5 +79,16 @@
         "chooseChannels": "Elige Youtube canales"
     },
     "failedToLoad": "No se pudo cargar",
-    "notFound": "Nada encontrado"
+    "notFound": "Nada encontrado",
+    "email": {
+        "verify-email": {
+            "subject": "Verifica tu correo electrónico",
+            "title": "Verifica tu correo electrónico",
+            "welcome": "¡Bienvenido!",
+            "description": "Gracias por crear una cuenta. Confirma tu dirección de correo electrónico.",
+            "button": "Verificar correo electrónico",
+            "expires": "Este enlace caduca en 24 horas.",
+            "fallback": "Si el botón no funciona, copia y abre este enlace:"
+        }
+    }
 }

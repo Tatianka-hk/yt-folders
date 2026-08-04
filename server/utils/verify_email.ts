@@ -7,6 +7,7 @@ import { sendVerificationEmail } from './send_email'
 export const verifyEmail = async (
     userId: Types.ObjectId,
     email: string,
+    locale: string,
     event: Parameters<typeof useRuntimeConfig>[0]
 ) => {
     const verificationToken = randomBytes(32).toString('hex')
@@ -19,12 +20,14 @@ export const verifyEmail = async (
     await VerificationToken.create({
         userId,
         token: verificationTokenHash,
+
         createdAt: new Date(),
         expiresAt: verificationTokenExpiresAt,
     })
     await sendVerificationEmail({
         email,
         verificationToken: verificationToken,
+        locale,
         event,
     })
 }

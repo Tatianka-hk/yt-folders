@@ -5,6 +5,7 @@ const PREFIX = '/auth'
 export type AuthUserType = {
     email: string
     password: string
+    locale?: string
 }
 
 export function registerUser(data: AuthUserType) {

@@ -61,7 +61,7 @@ import { FolderDialogEnum } from '~/types'
 const props = defineProps<{
     folderId: string
 }>()
-console.log(props.folderId)
+
 const emit = defineEmits(['changed'])
 const { t } = useI18n()
 

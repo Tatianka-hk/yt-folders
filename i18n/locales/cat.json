@@ -85,5 +85,16 @@
         "chooseChannels": "Elige Youtube canales"
     },
     "failedToLoad": "No s'ha pogut carregar",
-    "notFound": "No s'ha trobat res"
+    "notFound": "No s'ha trobat res",
+    "email": {
+        "verify-email": {
+            "subject": "Verifica el teu correu electrònic",
+            "title": "Verifica el teu correu electrònic",
+            "welcome": "Benvingut!",
+            "description": "Gràcies per crear un compte. Confirma la teva adreça de correu electrònic.",
+            "button": "Verificar el correu electrònic",
+            "expires": "Aquest enllaç caduca en 24 hores.",
+            "fallback": "Si el botó no funciona, copia i obre aquest enllaç:"
+        }
+    }
 }

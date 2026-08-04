@@ -21,7 +21,6 @@ const videos = ref<IVideo[]>([])
 watch(
     () => props.channelIds,
     async (channelIds) => {
-        console.log(channelIds)
         const data = await getYoutubeVideos(
             props.channelIds.map((channel) => channel.id)
         )
