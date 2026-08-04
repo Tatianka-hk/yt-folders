@@ -26,12 +26,12 @@ export default defineEventHandler(async (event) => {
         await connectDB()
 
         const existing = await User.findOne({ email })
-        // if (existing) {
-        //     throw createError({
-        //         statusCode: 409,
-        //         statusMessage: 'User already exists',
-        //     })
-        // }
+        if (existing) {
+            throw createError({
+                statusCode: 409,
+                statusMessage: 'User already exists',
+            })
+        }
 
         const newUser = await User.insertOne({
             email: email,
