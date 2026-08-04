@@ -29,6 +29,10 @@
             "reset_sent": "Si el correu electrònic existeix, t'hem enviat instruccions per restablir la contrasenya."
         },
         "verify_email": {
+            "notVerified": {
+                "title": "Correu electrònic no verificat",
+                "description": "Tens que verificar el teu correu electrònic per poder iniciar sessió."
+            },
             "loading": {
                 "title": "Estem verificant el teu correu electrònic",
                 "description": "Espera mentre verifiquem el teu enllaç."
@@ -62,6 +66,13 @@
                 "available_in": "Tornar a enviar d'aquí a {seconds} s",
                 "success": "S'ha enviat un nou correu de verificació.",
                 "error": "No s'ha pogut enviar el correu. Torna-ho a provar."
+            }
+        },
+        "login": {
+            "errors": {
+                "incorrect_credentials": "Credenciales incorrectas",
+                "email_not_verified": "El correu no ha estat verificat",
+                "too_many_requests": "Demasiados intentos. Torna-ho a provar més tard."
             }
         }
     },

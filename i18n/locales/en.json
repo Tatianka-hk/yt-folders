@@ -29,6 +29,10 @@
             "reset_sent": "If the email exists, we have sent reset instructions."
         },
         "verify_email": {
+            "notVerified": {
+                "title": "Email not verified",
+                "description": "You must verify your email to log in."
+            },
             "loading": {
                 "title": "Verifying your email",
                 "description": "Please wait while we verify your link."
@@ -62,6 +66,13 @@
                 "available_in": "Send again in {seconds}s",
                 "success": "A new verification email has been sent.",
                 "error": "We could not send the email. Please try again."
+            }
+        },
+        "login": {
+            "errors": {
+                "incorrect_credentials": "Incorrect credentials",
+                "email_not_verified": "Your email is not verified",
+                "too_many_requests": "Too many requests. Please try again later."
             }
         }
     },

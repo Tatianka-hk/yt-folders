@@ -29,6 +29,10 @@
             "reset_sent": "Si el correo electrónico existe, hemos enviado las instrucciones de restablecimiento."
         },
         "verify_email": {
+            "notVerified": {
+                "title": "Correo electrónico no verificado",
+                "description": "Tienes que verificar tu correo electrónica para poder iniciar sesión."
+            },
             "loading": {
                 "title": "Verificando tu correo electrónico",
                 "description": "Espera mientras verificamos tu enlace."
@@ -62,6 +66,13 @@
                 "available_in": "Enviar de nuevo en {seconds} s",
                 "success": "Se ha enviado un nuevo correo de verificación.",
                 "error": "No se ha podido enviar el correo. Inténtalo de nuevo."
+            }
+        },
+        "login": {
+            "errors": {
+                "incorrect_credentials": "Credenciales incorrectas",
+                "email_not_verified": "Tu correo no ha sido verificado",
+                "too_many_requests": "Demasiados intentos. Inténtalo de nuevo."
             }
         }
     },

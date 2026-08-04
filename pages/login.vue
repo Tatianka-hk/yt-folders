@@ -21,22 +21,28 @@
         <VButton :disabled="!email || !password" :onClick="onClick">{{
             t('auth.actions.login')
         }}</VButton>
+        <PleaseVerifyEmail :email="email" v-if="notVerifiedEmail" />
     </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { navigateTo } from 'nuxt/app'
+
 import { login } from '~/apis/auth'
 import { Field, Logo, VButton } from '~/ui'
 import { useSnackbar } from '~/composables/useSnackbar'
-import { navigateTo } from 'nuxt/app'
 import { useAuth } from '~/composables/useAuth'
+import { LOGIN_ERRORS } from '~/static/auth'
+import PleaseVerifyEmail from '~/components/auth/PleaseVerifyEmail.vue'
+
 const { showSnackbar } = useSnackbar()
 
 const { t } = useI18n()
 const email = ref('')
 const password = ref('')
 const { fetchAuth } = useAuth()
+const notVerifiedEmail = ref<boolean>(false)
 
 const onClick = () => {
     login({ email: email.value, password: password.value })
@@ -47,15 +53,10 @@ const onClick = () => {
             navigateTo('/home')
         })
         .catch((err) => {
-            showSnackbar(
-                err instanceof Error && err.message === 'Invalid data'
-                    ? t('auth.errors.invalid_credentials')
-                    : err.message ===
-                        'Too many login attempts. Try again later.'
-                      ? t('auth.errors.too_many_attempts')
-                      : t('auth.errors.something_went_wrong'),
-                'error'
-            )
+            showSnackbar(t(`auth.login.errors.${err.message}`))
+            if (err.message === LOGIN_ERRORS.EMAIL_NOT_VERIFIED) {
+                notVerifiedEmail.value = true
+            }
         })
 }
 </script>
