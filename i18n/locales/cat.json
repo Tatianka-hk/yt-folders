@@ -27,6 +27,31 @@
         },
         "info": {
             "reset_sent": "Si el correu electrònic existeix, t'hem enviat instruccions per restablir la contrasenya."
+        },
+        "verify_email": {
+            "loading": {
+                "title": "Estem verificant el teu correu electrònic",
+                "description": "Espera mentre verifiquem el teu enllaç."
+            },
+            "success": {
+                "title": "Correu electrònic verificat",
+                "description": "La teva adreça de correu electrònic s'ha verificat correctament. Ara ja pots iniciar sessió al teu compte.",
+                "snackbar": "El teu correu electrònic s'ha verificat correctament"
+            },
+            "error": {
+                "title": "No s'ha pogut verificar el correu electrònic",
+                "description": "És possible que l'enllaç hagi caducat o que ja s'hagi utilitzat. Torna-ho a provar.",
+                "snackbar": "No hem pogut verificar el teu correu electrònic"
+            },
+            "invalid_token": {
+                "title": "Enllaç de verificació no vàlid",
+                "description": "Falta el token de verificació. Comprova l'enllaç que has rebut per correu electrònic."
+            },
+            "actions": {
+                "retry": "Tornar-ho a provar",
+                "verifying": "Verificant...",
+                "login": "Iniciar sessió"
+            }
         }
     },
     "dropdown": {

@@ -15,4 +15,15 @@ export default defineNuxtConfig({
         defaultLocale: 'ua',
         langDir: 'locales/',
     },
+    runtimeConfig: {
+        smtpUser: '',
+        smtpPassword: '',
+        smtpPort: 587,
+        emailFrom: '',
+        smtpHost: '',
+
+        public: {
+            appUrl: '',
+        },
+    },
 })

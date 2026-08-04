@@ -27,6 +27,31 @@
         },
         "info": {
             "reset_sent": "Si el correo electrónico existe, hemos enviado las instrucciones de restablecimiento."
+        },
+        "verify_email": {
+            "loading": {
+                "title": "Verificando tu correo electrónico",
+                "description": "Espera mientras verificamos tu enlace."
+            },
+            "success": {
+                "title": "Correo electrónico verificado",
+                "description": "Tu dirección de correo electrónico se ha verificado correctamente. Ya puedes iniciar sesión en tu cuenta.",
+                "snackbar": "Tu correo electrónico se ha verificado correctamente"
+            },
+            "error": {
+                "title": "No se pudo verificar el correo electrónico",
+                "description": "Es posible que el enlace haya caducado o que ya se haya utilizado. Inténtalo de nuevo.",
+                "snackbar": "No hemos podido verificar tu correo electrónico"
+            },
+            "invalid_token": {
+                "title": "Enlace de verificación no válido",
+                "description": "Falta el token de verificación. Comprueba el enlace que recibiste por correo electrónico."
+            },
+            "actions": {
+                "retry": "Intentarlo de nuevo",
+                "verifying": "Verificando...",
+                "login": "Iniciar sesión"
+            }
         }
     },
     "actions": {

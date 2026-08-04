@@ -36,3 +36,11 @@ export function getEmail() {
         url: `${PREFIX}/email`,
     })
 }
+
+export function verifyEmail(token: string) {
+    return apiRequest({
+        method: 'POST',
+        url: `${PREFIX}/verify-email`,
+        data: { token },
+    })
+}

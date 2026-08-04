@@ -27,6 +27,31 @@
         },
         "info": {
             "reset_sent": "If the email exists, we have sent reset instructions."
+        },
+        "verify_email": {
+            "loading": {
+                "title": "Verifying your email",
+                "description": "Please wait while we verify your link."
+            },
+            "success": {
+                "title": "Email verified",
+                "description": "Your email address has been successfully verified. You can now log in to your account.",
+                "snackbar": "Your email has been successfully verified"
+            },
+            "error": {
+                "title": "Email verification failed",
+                "description": "The link may have expired or already been used. Please try again.",
+                "snackbar": "We could not verify your email"
+            },
+            "invalid_token": {
+                "title": "Invalid verification link",
+                "description": "The verification token is missing. Please check the link in your email."
+            },
+            "actions": {
+                "retry": "Try again",
+                "verifying": "Verifying...",
+                "login": "Log in"
+            }
         }
     },
     "actions": {
