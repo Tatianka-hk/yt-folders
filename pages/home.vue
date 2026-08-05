@@ -7,7 +7,9 @@
             </div>
         </div>
         <div className="w-full w-screen flex items-center justify-end"></div>
+        <Loading v-if="isAuthLoading" />
         <div
+            v-else
             class="w-full h-full flex gap-[40px] relative lg:flex-row flex-col"
         >
             <FoldersList @selected="selectedChannelsIds = $event" />
@@ -16,9 +18,19 @@
     </div>
 </template>
 <script setup lang="ts">
-import { Logo } from '../ui'
+import type { IChannel } from '~/types'
+import { Logo, Loading } from '../ui'
 import { FoldersList, VideoGrid } from '../components'
 import { LogoutButton } from '../components/auth'
 
-const selectedChannelsIds = ref<string[]>([])
+const { isAuthLoading, isAuth } = useAuth()
+const { goToRoute } = useCustomRoute()
+
+watch(isAuthLoading, (v) => {
+    if (!isAuth.value) {
+        goToRoute('login')
+    }
+})
+
+const selectedChannelsIds = ref<IChannel[]>([])
 </script>
