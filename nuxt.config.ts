@@ -2,7 +2,11 @@
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: { enabled: true },
-    components: [{ path: '~/components' }, { path: '~/ui', pathPrefix: false }],
+    components: [
+        { path: '~/components' },
+        { path: '~/ui', pathPrefix: false },
+        { path: '~/pages', pathPrefix: false },
+    ],
     css: ['~/assets/main.css'],
     modules: ['@nuxtjs/i18n', '@nuxtjs/tailwindcss'],
     i18n: {

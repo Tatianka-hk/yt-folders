@@ -148,7 +148,6 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
 import type { IChannel, IYoutubeChannelOption } from '@/types'
 
 const props = defineProps<{

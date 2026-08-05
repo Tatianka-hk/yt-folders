@@ -28,8 +28,6 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { navigateTo } from 'nuxt/app'
 
 import { login } from '~/apis/auth'
 import { Field, Logo, VButton } from '~/ui'
@@ -40,6 +38,7 @@ import PleaseVerifyEmail from '~/components/auth/PleaseVerifyEmail.vue'
 
 const { showSnackbar } = useSnackbar()
 const { t } = useI18n()
+const { goToRoute } = useCustomRoute()
 
 const email = ref('')
 const password = ref('')
@@ -54,13 +53,13 @@ const onClick = () => {
             await fetchAuth()
         })
         .then(() => {
-            console.log('here')
-            navigateTo('/home')
+            goToRoute('home')
         })
         .catch((err) => {
             if (err.message === LOGIN_ERRORS.EMAIL_NOT_VERIFIED) {
                 notVerifiedEmail.value = true
             } else {
+                console.error(err)
                 showSnackbar(t(`auth.login.errors.${err.message}`))
             }
         })

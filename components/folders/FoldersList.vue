@@ -43,7 +43,6 @@ import { useDialog } from '~/composables/useDialog'
 import { VButton } from '~/ui'
 import FolderDialog from './FolderDialog.vue'
 import { getFolders } from '~/apis/folders'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const { isOpen, openDialog, closeDialog } = useDialog()

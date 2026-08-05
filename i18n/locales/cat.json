@@ -72,7 +72,8 @@
             "errors": {
                 "incorrect_credentials": "Credenciales incorrectas",
                 "email_not_verified": "El correu no ha estat verificat",
-                "too_many_requests": "Demasiados intentos. Torna-ho a provar més tard."
+                "too_many_requests": "Demasiados intentos. Torna-ho a provar més tard.",
+                "something_went_wrong": "Alguna cosa ha anat malament."
             }
         }
     },

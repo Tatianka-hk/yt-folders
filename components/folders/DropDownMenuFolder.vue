@@ -53,7 +53,6 @@
 import DropDownMenu from '~/ui/DropDownMenu.vue'
 import FolderDialog from './FolderDialog.vue'
 import { Icon3Points, IconEdit, IconDelete } from '~/assets/icons'
-import { useI18n } from 'vue-i18n'
 import { useDialog } from '~/composables/useDialog'
 import { deleteFolder } from '~/apis/folders'
 import { FolderDialogEnum } from '~/types'

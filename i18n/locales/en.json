@@ -72,7 +72,8 @@
             "errors": {
                 "incorrect_credentials": "Incorrect credentials",
                 "email_not_verified": "Your email is not verified",
-                "too_many_requests": "Too many requests. Please try again later."
+                "too_many_requests": "Too many requests. Please try again later.",
+                "something_went_wrong": "Something went wrong."
             }
         }
     },

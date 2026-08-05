@@ -71,7 +71,8 @@
             "errors": {
                 "incorrect_credentials": "Невірні дані",
                 "email_not_verified": "Ваша електронна адреса не підтверджена",
-                "too_many_requests": "Забагато спроб. Спробуйте пізніше."
+                "too_many_requests": "Забагато спроб. Спробуйте пізніше",
+                "something_went_wrong": "Щось пішло не так"
             }
         }
     },
