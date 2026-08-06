@@ -1,0 +1,127 @@
+{
+    "auth": {
+        "labels": {
+            "email": "Correu electrònic",
+            "password": "Contrasenya",
+            "confirm_password": "Confirma la contrasenya"
+        },
+        "actions": {
+            "login": "Inicia sessió",
+            "signup": "Registra't",
+            "login_google": "Inicia sessió amb Google",
+            "forgot": "Has oblidat la contrasenya?"
+        },
+        "errors": {
+            "email_invalid": "Introdueix un correu electrònic vàlid.",
+            "email_exists": "Aquest correu electrònic ja està registrat.",
+            "password_mismatch": "Les contrasenyes no coincideixen.",
+            "invalid_credentials": "Correu electrònic o contrasenya incorrectes.",
+            "too_many_attempts": "Massa intents. Torna-ho a provar més tard.",
+            "something_went_wrong": "Alguna cosa ha anat malament.",
+            "password_invalid": "La contrasenya ha de tenir almenys una lletra i una cifra.",
+            "password_too_short": "La contrasenya ha de tenir almenys 6 caracters."
+        },
+        "success": {
+            "signup": "El compte s'ha creat correctament.",
+            "login": "Has iniciat sessió correctament."
+        },
+        "info": {
+            "reset_sent": "Si el correu electrònic existeix, t'hem enviat instruccions per restablir la contrasenya."
+        },
+        "verify_email": {
+            "notVerified": {
+                "title": "Correu electrònic no verificat",
+                "description": "Tens que verificar el teu correu electrònic per poder iniciar sessió."
+            },
+            "loading": {
+                "title": "Estem verificant el teu correu electrònic",
+                "description": "Espera mentre verifiquem el teu enllaç."
+            },
+            "success": {
+                "title": "Correu electrònic verificat",
+                "description": "La teva adreça de correu electrònic s'ha verificat correctament. Ara ja pots iniciar sessió al teu compte.",
+                "snackbar": "El teu correu electrònic s'ha verificat correctament"
+            },
+            "error": {
+                "title": "No s'ha pogut verificar el correu electrònic",
+                "description": "És possible que l'enllaç hagi caducat o que ja s'hagi utilitzat. Torna-ho a provar.",
+                "snackbar": "No hem pogut verificar el teu correu electrònic"
+            },
+            "invalid_token": {
+                "title": "Enllaç de verificació no vàlid",
+                "description": "Falta el token de verificació. Comprova l'enllaç que has rebut per correu electrònic."
+            },
+            "actions": {
+                "retry": "Tornar-ho a provar",
+                "verifying": "Verificant...",
+                "login": "Iniciar sessió"
+            },
+            "sent": {
+                "title": "Revisa el teu correu electrònic",
+                "description": "T'hem enviat un correu amb un enllaç de verificació. Obre el correu i verifica la teva adreça electrònica."
+            },
+            "resend": {
+                "button": "Tornar a enviar el correu",
+                "sending": "Enviant...",
+                "available_in": "Tornar a enviar d'aquí a {seconds} s",
+                "success": "S'ha enviat un nou correu de verificació.",
+                "error": "No s'ha pogut enviar el correu. Torna-ho a provar."
+            }
+        },
+        "login": {
+            "errors": {
+                "incorrect_credentials": "Credenciales incorrectas",
+                "email_not_verified": "El correu no ha estat verificat",
+                "too_many_requests": "Demasiados intentos. Torna-ho a provar més tard.",
+                "something_went_wrong": "Alguna cosa ha anat malament."
+            }
+        }
+    },
+    "dropdown": {
+        "edit": "Editar",
+        "delete": "Eliminar"
+    },
+    "menu": {
+        "buttons": {
+            "addFolder": "Afegir una carpeta",
+            "logout": "Tancar sessió"
+        }
+    },
+    "actions": {
+        "create": "Crear",
+        "clear": "Esborrar",
+        "done": "Fet",
+        "search": "Cerca"
+    },
+    "folder": {
+        "folders": "Carpetes",
+        "edit": "Editar carpeta",
+        "create": "Crear carpeta",
+        "name": "Nom de la carpeta",
+        "nameError": "El nom de la carpeta ha de tenir almenys 3 caracters",
+        "editSuccess": "Carpeta editada correctament",
+        "createSuccess": "Carpeta creada correctament",
+        "selected": "Seleccionat",
+        "cancel": "Cancel·lar",
+        "copySuccess": "Targetes copiades correctament",
+        "selectFolder": "Selecciona una carpeta",
+        "chooseChannels": "Elige Youtube canales"
+    },
+    "failedToLoad": "No s'ha pogut carregar",
+    "notFound": "No s'ha trobat res",
+    "email": {
+        "verify-email": {
+            "subject": "Verifica el teu correu electrònic",
+            "title": "Verifica el teu correu electrònic",
+            "welcome": "Benvingut!",
+            "description": "Gràcies per crear un compte. Confirma la teva adreça de correu electrònic.",
+            "button": "Verificar el correu electrònic",
+            "expires": "Aquest enllaç caduca en 24 hores.",
+            "fallback": "Si el botó no funciona, copia i obre aquest enllaç:"
+        }
+    },
+    "somethingWentWrong": "Alguna cosa ha anat malament",
+    "common": {
+        "avatar": "Avatar"
+    }
+}

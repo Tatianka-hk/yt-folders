@@ -1,0 +1,69 @@
+@import './base.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    padding: 40px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0d0d12;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+a,
+.green {
+    text-decoration: none;
+    color: hsla(160, 100%, 37%, 1);
+    transition: 0.4s;
+    padding: 3px;
+}
+
+#__nuxt {
+    width: 100%;
+    height: 100%;
+}
+@media (hover: hover) {
+    a:hover {
+        background-color: hsla(160, 100%, 37%, 0.2);
+    }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #d8e2ec inset;
+    -webkit-text-fill-color: #1f2a37;
+    caret-color: #1f2a37;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+input:-moz-autofill {
+    box-shadow: 0 0 0 1000px #d8e2ec inset;
+    -moz-text-fill-color: #1f2a37;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b5b5b5;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9e9e9e;
+}

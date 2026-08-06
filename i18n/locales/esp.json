@@ -1,0 +1,127 @@
+{
+    "auth": {
+        "labels": {
+            "email": "Correo electrónico",
+            "password": "Contraseña",
+            "confirm_password": "Confirmar contraseña"
+        },
+        "actions": {
+            "login": "Iniciar sesión",
+            "signup": "Registrarse",
+            "login_google": "Iniciar sesión con Google",
+            "forgot": "¿Olvidaste tu contraseña?"
+        },
+        "errors": {
+            "email_invalid": "Introduce un correo electrónico válido.",
+            "email_exists": "Este correo electrónico ya está registrado.",
+            "password_mismatch": "Las contraseñas no coinciden.",
+            "invalid_credentials": "Correo electrónico o contraseña incorrectos.",
+            "too_many_attempts": "Demasiados intentos. Inténtalo más tarde.",
+            "something_went_wrong": "Algo salió mal.",
+            "password_invalid": "La contraseña debe tener al menos una letra y una cifra.",
+            "password_too_short": "La contraseña debe tener al menos 6 caracteres."
+        },
+        "success": {
+            "signup": "La cuenta ha sido creada.",
+            "login": "Has iniciado sesión correctamente."
+        },
+        "info": {
+            "reset_sent": "Si el correo electrónico existe, hemos enviado las instrucciones de restablecimiento."
+        },
+        "verify_email": {
+            "notVerified": {
+                "title": "Correo electrónico no verificado",
+                "description": "Tienes que verificar tu correo electrónica para poder iniciar sesión."
+            },
+            "loading": {
+                "title": "Verificando tu correo electrónico",
+                "description": "Espera mientras verificamos tu enlace."
+            },
+            "success": {
+                "title": "Correo electrónico verificado",
+                "description": "Tu dirección de correo electrónico se ha verificado correctamente. Ya puedes iniciar sesión en tu cuenta.",
+                "snackbar": "Tu correo electrónico se ha verificado correctamente"
+            },
+            "error": {
+                "title": "No se pudo verificar el correo electrónico",
+                "description": "Es posible que el enlace haya caducado o que ya se haya utilizado. Inténtalo de nuevo.",
+                "snackbar": "No hemos podido verificar tu correo electrónico"
+            },
+            "invalid_token": {
+                "title": "Enlace de verificación no válido",
+                "description": "Falta el token de verificación. Comprueba el enlace que recibiste por correo electrónico."
+            },
+            "actions": {
+                "retry": "Intentarlo de nuevo",
+                "verifying": "Verificando...",
+                "login": "Iniciar sesión"
+            },
+            "sent": {
+                "title": "Revisa tu correo electrónico",
+                "description": "Te hemos enviado un correo con un enlace de verificación. Abre el correo y verifica tu dirección de correo electrónico."
+            },
+            "resend": {
+                "button": "Enviar el correo de nuevo",
+                "sending": "Enviando...",
+                "available_in": "Enviar de nuevo en {seconds} s",
+                "success": "Se ha enviado un nuevo correo de verificación.",
+                "error": "No se ha podido enviar el correo. Inténtalo de nuevo."
+            }
+        },
+        "login": {
+            "errors": {
+                "incorrect_credentials": "Credenciales incorrectas",
+                "email_not_verified": "Tu correo no ha sido verificado",
+                "too_many_requests": "Demasiados intentos. Inténtalo de nuevo.",
+                "something_went_wrong": "Algo salió mal."
+            }
+        }
+    },
+    "actions": {
+        "create": "Crear",
+        "clear": "Limpiar",
+        "done": "Hecho",
+        "search": "Buscar"
+    },
+    "dropdown": {
+        "edit": "Editar",
+        "delete": "Eliminar"
+    },
+    "folder": {
+        "folders": "Carpetas",
+        "edit": "Editar la carpeta",
+        "create": "Crear una carpeta",
+        "name": "Nombre de la carpeta",
+        "nameError": "El nombre de la carpeta debe tener al menos 3 caracteres",
+        "editSuccess": "Carpeta editada correctamente",
+        "createSuccess": "Carpeta creada correctamente",
+        "selected": "Seleccionado",
+        "cancel": "Cancelar",
+        "copySuccess": "Tarjetas copiadas correctamente",
+        "selectFolder": "Selecciona una carpeta",
+        "chooseChannels": "Elige Youtube canales"
+    },
+    "menu": {
+        "buttons": {
+            "addFolder": "Agregar una carpeta",
+            "logout": "Cerrar sesión"
+        }
+    },
+    "failedToLoad": "No se pudo cargar",
+    "notFound": "Nada encontrado",
+    "email": {
+        "verify-email": {
+            "subject": "Verifica tu correo electrónico",
+            "title": "Verifica tu correo electrónico",
+            "welcome": "¡Bienvenido!",
+            "description": "Gracias por crear una cuenta. Confirma tu dirección de correo electrónico.",
+            "button": "Verificar correo electrónico",
+            "expires": "Este enlace caduca en 24 horas.",
+            "fallback": "Si el botón no funciona, copia y abre este enlace:"
+        }
+    },
+    "somethingWentWrong": "Algo salió mal",
+    "common": {
+        "avatar": "Avatar"
+    }
+}
