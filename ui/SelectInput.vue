@@ -4,16 +4,16 @@
         class="relative text-text text-base bg-primary rounded-lg w-fit h-full"
     >
         <div
-            class="flex gap-1 py-2 px-4 cursor-pointer items-center justify-between"
+            class="flex gap-1 py-2 px-4 cursor-pointer items-center justify-between h-full"
             @click="onClick"
         >
             {{ selectedLabel }}
-            <IconChevronUp v-if="opened" />
-            <IconChevronDown v-else />
+            <IconChevronUp @click.stop="onClick" v-if="opened" />
+            <IconChevronDown @click.stop="onClick" v-else />
         </div>
         <ul
             v-if="opened"
-            class="absolute top-full left-0 z-10 mt-1 w-full bg-white border border-text rounded-lg shadow-md max-h-[200px] overflow-y-scroll"
+            class="absolute top-full left-0 z-10 mt-1 w-full bg-white border border-text rounded-lg shadow-md max-h-[200px] overflow-y-auto"
         >
             <li
                 v-for="option in options"

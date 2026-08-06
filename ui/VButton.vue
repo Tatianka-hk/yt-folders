@@ -1,6 +1,7 @@
 <template>
     <button
         type="button"
+        :aria-label="ariaLabel"
         @click="ifClicked"
         :class="[
             'p-4 text-text text-base rounded-lg',
@@ -21,6 +22,7 @@ const props = withDefaults(
         onClick: () => void
         disabled?: boolean
         extraClass?: string
+        ariaLabel?: string
     }>(),
     {
         disabled: false,

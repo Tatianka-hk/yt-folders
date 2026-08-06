@@ -1,12 +1,13 @@
 <template>
-    <div class="w-full h-full flex items-center flex-col gap-[40px]">
-        <div class="w-full flex items-center">
-            <Logo />
-            <div className="w-full flex items-center justify-end">
-                <LogoutButton />
-            </div>
+    <div class="w-full h-full flex flex-col gap-[40px]">
+        <div class="w-full flex justify-end gap-2">
+            <LanguageInput />
+            <LogoutButton />
         </div>
-        <div className="w-full w-screen flex items-center justify-end"></div>
+        <div className="w-full flex items-center justify-center">
+            <Logo />
+        </div>
+        <div class="w-full w-screen flex items-center justify-end"></div>
         <Loading v-if="isAuthLoading" />
         <div
             v-else
@@ -20,14 +21,21 @@
 <script setup lang="ts">
 import type { IChannel } from '~/types'
 import { Logo, Loading } from '../ui'
-import { FoldersList, VideoGrid } from '../components'
+import { FoldersList, VideoGrid, LanguageInput } from '../components'
 import { LogoutButton } from '../components/auth'
+import { useCustomRoute } from '~/composables/useCustomRoute'
+import { useAuth } from '~/composables/useAuth'
 
-const { isAuthLoading, isAuth } = useAuth()
+const { isAuthLoading, isAuth, fetchAuth } = useAuth()
 const { goToRoute } = useCustomRoute()
 
+// onMounted(async () => {
+//     await fetchAuth()
+// })
+
 watch(isAuthLoading, (v) => {
-    if (!isAuth.value) {
+    console.log('asdas')
+    if (!isAuth.value && !isAuthLoading.value) {
         goToRoute('login')
     }
 })

@@ -28,6 +28,7 @@
             <VButton
                 :disabled="!email || !password || !confirmPassword || isLoading"
                 :onClick="onClick"
+                :ariaLabel="t('auth.actions.signup')"
             >
                 {{ t('auth.actions.signup') }}
             </VButton>
@@ -39,6 +40,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from '#imports'
 
 import { registerUser } from '~/apis/auth'
 import { Field, Logo, VButton } from '~/ui'

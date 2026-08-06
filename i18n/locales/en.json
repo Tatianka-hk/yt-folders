@@ -120,5 +120,8 @@
             "fallback": "If the button does not work, copy and open this link:"
         }
     },
-    "somethingWentWrong": "Something went wrong"
+    "somethingWentWrong": "Something went wrong",
+    "common": {
+        "avatar": "Avatar"
+    }
 }

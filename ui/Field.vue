@@ -8,6 +8,7 @@
             :id="inputId"
             :name="name"
             :type="type"
+            :aria-label="label"
             :value="modelValue"
             @input="onInput"
             v-bind="attrs"

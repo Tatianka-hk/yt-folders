@@ -101,6 +101,12 @@
         "selectFolder": "Selecciona una carpeta",
         "chooseChannels": "Elige Youtube canales"
     },
+    "menu": {
+        "buttons": {
+            "addFolder": "Agregar una carpeta",
+            "logout": "Cerrar sesión"
+        }
+    },
     "failedToLoad": "No se pudo cargar",
     "notFound": "Nada encontrado",
     "email": {
@@ -114,5 +120,8 @@
             "fallback": "Si el botón no funciona, copia y abre este enlace:"
         }
     },
-    "somethingWentWrong": "Algo salió mal"
+    "somethingWentWrong": "Algo salió mal",
+    "common": {
+        "avatar": "Avatar"
+    }
 }

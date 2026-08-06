@@ -19,6 +19,7 @@
             />
         </div>
         <VButton
+            :ariaLabel="t('auth.actions.login')"
             :disabled="!email || !password || isLoading"
             :onClick="onClick"
             >{{ t('auth.actions.login') }}</VButton
@@ -28,6 +29,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from '#imports'
 
 import { login } from '~/apis/auth'
 import { Field, Logo, VButton } from '~/ui'
@@ -35,6 +37,7 @@ import { useSnackbar } from '~/composables/useSnackbar'
 import { useAuth } from '~/composables/useAuth'
 import { LOGIN_ERRORS } from '~/static/auth'
 import PleaseVerifyEmail from '~/components/auth/PleaseVerifyEmail.vue'
+import { useCustomRoute } from '~/composables/useCustomRoute'
 
 const { showSnackbar } = useSnackbar()
 const { t } = useI18n()
