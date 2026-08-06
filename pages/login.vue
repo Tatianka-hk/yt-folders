@@ -18,6 +18,9 @@
                 v-model="password"
             />
         </div>
+        <div v-if="isLoading">
+            <Loading />
+        </div>
         <VButton
             :ariaLabel="t('auth.actions.login')"
             :disabled="!email || !password || isLoading"
@@ -32,7 +35,7 @@ import { ref } from 'vue'
 import { useI18n } from '#imports'
 
 import { login } from '~/apis/auth'
-import { Field, Logo, VButton } from '~/ui'
+import { Field, Logo, VButton, Loading } from '~/ui'
 import { useSnackbar } from '~/composables/useSnackbar'
 import { useAuth } from '~/composables/useAuth'
 import { LOGIN_ERRORS } from '~/static/auth'

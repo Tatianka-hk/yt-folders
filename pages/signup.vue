@@ -25,6 +25,9 @@
                     v-model="confirmPassword"
                 />
             </div>
+            <div v-if="isLoading">
+                <Loading />
+            </div>
             <VButton
                 :disabled="!email || !password || !confirmPassword || isLoading"
                 :onClick="onClick"
@@ -43,7 +46,7 @@ import { ref } from 'vue'
 import { useI18n } from '#imports'
 
 import { registerUser } from '~/apis/auth'
-import { Field, Logo, VButton } from '~/ui'
+import { Field, Logo, VButton, Loading } from '~/ui'
 import EndOfSignup from '~/components/auth/EndOfSignup.vue'
 import { useSnackbar } from '../composables/useSnackbar'
 
