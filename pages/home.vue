@@ -31,7 +31,7 @@ import { Logo, Loading } from '../ui'
 import { FoldersList, VideoGrid, LanguageInput } from '../components'
 import { LogoutButton } from '../components/auth'
 
-const { isAuthLoading, isAuth, fetchAuth } = useAuth()
+const { isAuthLoading, isAuth } = useAuth()
 const { goToRoute } = useCustomRoute()
 
 const searchAmount = ref<number>(0)

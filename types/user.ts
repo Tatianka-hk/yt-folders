@@ -10,7 +10,7 @@ export interface IAuthCredentials {
 }
 
 export interface IUserSearch {
-    userId: Schema.Types.ObjectId
+    userId: Schema.Types.ObjectId | string
     date: Date
     amount: number
 }

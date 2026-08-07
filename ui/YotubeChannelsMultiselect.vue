@@ -37,10 +37,7 @@
         </div>
 
         <!-- LABEL ABOUT AMOUNT -->
-        <div
-            class="text-sm text-text/60"
-            v-if="Number(searchAmount) < Number(limit)"
-        >
+        <div class="text-sm text-text/60" v-if="limitIsExceeded">
             {{ t('limit.alarm') }} {{ limit }}. {{ t('limit.used') }}
             {{ searchAmount }} {{ t('common.of') }}
             {{ limit }}
@@ -65,12 +62,13 @@
                 @keydown.down.prevent="move(1)"
                 @keydown.up.prevent="move(-1)"
                 @keydown.esc.prevent="close"
+                :disabled="limitIsExceeded"
             />
 
             <button
                 type="button"
                 class="shrink-0 rounded-md bg-blue px-4 py-2 text-sm text-white hover:opacity-90 disabled:opacity-50"
-                :disabled="!query.trim()"
+                :disabled="!query.trim() || limitIsExceeded"
                 @click="search"
             >
                 {{ t('actions.search') }}
@@ -193,6 +191,10 @@ const query = ref('')
 const searchQuery = ref('')
 const hasSearched = ref(false)
 const highlightedIndex = ref(0)
+
+const limitIsExceeded = computed(() => {
+    return Number(searchAmount.value) >= Number(limit)
+})
 
 const filteredOptions = computed(() => {
     if (!hasSearched.value) {

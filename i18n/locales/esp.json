@@ -129,6 +129,6 @@
     "limit": {
         "alarm": "Límite diario",
         "used": "Usado",
-        "limit-exceeded": "Limite diario excedido"
+        "limit-exceeded": "Límite diario excedido"
     }
 }

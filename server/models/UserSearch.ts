@@ -1,9 +1,10 @@
 import { Schema, model } from 'mongoose'
+import { IUserSearch } from '~/types'
 
-const UserSearchchema = new Schema(
+const UserSearchSchema = new Schema<IUserSearch>(
     {
         userId: {
-            type: Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId || String,
             required: true,
         },
         date: {
@@ -18,5 +19,5 @@ const UserSearchchema = new Schema(
     },
     { bufferCommands: false }
 )
-
-export const UserSearch = model('UserSearch', UserSearchchema)
+UserSearchSchema.index({ userId: 1, date: 1 }, { unique: true })
+export const UserSearch = model('UserSearch', UserSearchSchema)

@@ -1,7 +1,7 @@
 import { IUserSearch } from '~/types/user'
 import { UserSearch } from '../models'
-
-export class UserRepository {
+const MAX_USER_SEARCH_AMOUNT = process.env.NUXT_SEARCHES_PER_PROJECT_PER_DAY
+export class SearchQuota {
     async getUserAmountSearch(userId: string, date?: Date): Promise<number> {
         if (!userId) {
             throw new Error('getUserNumberSearch: userId is required')
@@ -37,6 +37,40 @@ export class UserRepository {
         )
     }
 
+    async reserveQuota(userId: string) {
+        const today = new Date().setHours(0, 0, 0, 0)
+
+        const userSearch = await UserSearch.findOne({
+            userId,
+            date: today,
+        })
+        const quota: number = userSearch ? userSearch.amount : 0
+
+        if (quota >= Number(MAX_USER_SEARCH_AMOUNT)) {
+            throw new Error('Limit reached')
+            return
+        }
+
+        const result = await UserSearch.findOneAndUpdate(
+            {
+                userId: userId,
+                date: today,
+            },
+            { $inc: { amount: 1 } },
+            { upsert: true, new: true }
+        )
+
+        return result
+    }
+
+    async releaseQuota(userId: string) {
+        const today = new Date().setHours(0, 0, 0, 0)
+        await UserSearch.updateOne(
+            { userId, date: today },
+            { $inc: { amount: -1 } }
+        )
+    }
+
     private getDayRange(date?: Date) {
         const target = date ? new Date(date) : new Date()
 
@@ -56,4 +90,4 @@ export class UserRepository {
     }
 }
 
-export const userRepository = new UserRepository()
+export const searchQuotaRepository = new SearchQuota()

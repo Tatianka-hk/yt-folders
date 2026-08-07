@@ -1,12 +1,10 @@
 import { defineEventHandler, getQuery, createError } from 'h3'
-import { userRepository } from '~/server/reposentories/user'
+import { searchQuotaRepository } from '~/server/reposentories/searchQuota.repository'
 import connectDB from '~/server/utils/db'
 import type { IYoutubeChannelOption } from '~/types'
 
 const DEFAULT_MAX_RESULTS = 10
 const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3'
-const MAX_USER_SEARCH_AMOUNT =
-    process.env.NUXT_SEARCHES_PER_PROJECT_PER_DAY ?? 0
 
 interface YouTubeSearchResponse {
     items?: Array<{
@@ -47,34 +45,34 @@ export default defineEventHandler(async (event) => {
                 statusMessage: 'Unauthorized',
             })
         }
+        const quota = await searchQuotaRepository.reserveQuota(userId)
 
-        const searchAmount = await userRepository.getUserAmountSearch(
-            event.context.userId
-        )
-
-        if (searchAmount >= Number(MAX_USER_SEARCH_AMOUNT)) {
+        if (!quota) {
             throw createError({
                 statusCode: 429,
-                statusMessage: 'Too many requests',
+                statusMessage: 'Limit reached',
             })
         }
 
-        const apiKey = getApiKey()
-        const channelIds = await fetchChannelIds(
-            searchQuery,
-            Number(maxResults ?? DEFAULT_MAX_RESULTS),
-            apiKey
-        )
-        await userRepository.incrementUserAmountSearch(userId)
-        if (!channelIds.length) return []
+        try {
+            const apiKey = getApiKey()
+            const channelIds = await fetchChannelIds(
+                searchQuery,
+                Number(maxResults ?? DEFAULT_MAX_RESULTS),
+                apiKey
+            )
+            if (!channelIds.length) return []
 
-        return await fetchAndMapChannelDetails(channelIds, apiKey)
+            return await fetchAndMapChannelDetails(channelIds, apiKey)
+        } catch (err: any) {
+            await searchQuotaRepository.releaseQuota(userId)
+            throw err
+        }
     } catch (err: any) {
         console.error('/youtube/channels.get:', err)
         throw createError({
-            statusCode: 500,
-            statusMessage: 'Server error',
-            data: String(err),
+            statusCode: err.statusCode ?? 500,
+            statusMessage: err.message ?? 'Server error',
         })
     }
 })
