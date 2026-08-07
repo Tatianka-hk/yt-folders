@@ -35,7 +35,10 @@ const { isAuthLoading, isAuth } = useAuth()
 const { goToRoute } = useCustomRoute()
 
 const searchAmount = ref<number>(0)
-const selectedChannelsIds = ref<IChannel[]>([])
+const selectedChannelsIds = useState<IChannel[]>(
+    'home-selected-channels',
+    () => []
+)
 
 const getSearchAmount = () => {
     getUserAmountSearch()
