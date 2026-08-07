@@ -8,7 +8,7 @@
             <Field v-model="folderName" :label="t('folder.name')" type="text" />
 
             <YotubeChannelsMultiselect
-                @update:query="(e) => (query = e)"
+                @update:query="onSearch"
                 v-model="selectedChannels"
                 :options="results"
             />
@@ -27,11 +27,12 @@
 import { onMounted, ref } from 'vue'
 import { Dialog, Field, YotubeChannelsMultiselect } from '~/ui'
 import { useSnackbar } from '~/composables/useSnackbar'
-import type { IAction, IYoutubeChannelOption } from '~/types'
+import type { IAction, IChannel, IYoutubeChannelOption } from '~/types'
 import { FolderDialogEnum } from '~/types'
 import { getYoutubeChannels } from '~/apis/youtube'
 import { createFolder, getFolder, updateFolder } from '~/apis/folders'
 import { useYoutubeChannelSearch } from '~/composables/useYoutubeChannelSearch'
+import { useI18n } from '#imports'
 const props = withDefaults(
     defineProps<{
         isOpen: boolean
@@ -47,11 +48,12 @@ const props = withDefaults(
 const { t } = useI18n()
 const { showSnackbar } = useSnackbar()
 const folderName = ref<string>('')
-const selectedChannels = ref<string[]>([])
+const selectedChannels = ref<IChannel[]>([])
 const youtubeChannels = ref<IYoutubeChannelOption[]>([])
 const isLoading = ref<boolean>(false)
 const emit = defineEmits<{
     (e: 'changed'): void
+    (e: 'searched'): void
 }>()
 
 const { query, results, loading, error } = useYoutubeChannelSearch({
@@ -86,6 +88,10 @@ const save = async () => {
     props.closeDialog()
 }
 
+const onSearch = (e: string) => {
+    query.value = e
+    emit('searched')
+}
 onMounted(async () => {
     isLoading.value = true
     try {

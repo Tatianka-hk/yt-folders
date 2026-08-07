@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
 
     try {
         await connectDB()
-        const folder: IFolder = await Folder.findOne({ _id: folderID })
+        const folder: IFolder | null = await Folder.findOne({ _id: folderID })
         if (!folder) {
             throw createError({
                 statusCode: 404,

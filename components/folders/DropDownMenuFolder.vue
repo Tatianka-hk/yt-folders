@@ -44,24 +44,27 @@
                 :closeDialog="closeEditDialog"
                 :onChanged="() => emit('changed')"
                 :folderId="folderId"
+                @searched="onSearch"
             />
         </template>
     </DropDownMenu>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from '#imports'
+
 import DropDownMenu from '~/ui/DropDownMenu.vue'
-import FolderDialog from './FolderDialog.vue'
 import { Icon3Points, IconEdit, IconDelete } from '~/assets/icons'
 import { useDialog } from '~/composables/useDialog'
 import { deleteFolder } from '~/apis/folders'
 import { FolderDialogEnum } from '~/types'
+import FolderDialog from './FolderDialog.vue'
 
 const props = defineProps<{
     folderId: string
 }>()
 
-const emit = defineEmits(['changed'])
+const emit = defineEmits(['changed', 'searched'])
 const { t } = useI18n()
 
 const {
@@ -73,6 +76,7 @@ const {
 const onEdit = () => {
     openEditDialog()
 }
+const onSearch = () => emit('searched')
 
 const onDelete = async () => {
     try {

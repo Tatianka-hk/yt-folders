@@ -105,7 +105,8 @@
         "cancel": "Cancel",
         "copySuccess": "Flashcards copied successfully",
         "selectFolder": "Select folder",
-        "chooseChannels": "Choose Youtube channels"
+        "chooseChannels": "Choose Youtube channels",
+        "enterChannelAndSearch": "Enter a channel and "
     },
     "failedToLoad": "Failed to load",
     "notFound": "Nothing found",
@@ -122,6 +123,12 @@
     },
     "somethingWentWrong": "Something went wrong",
     "common": {
-        "avatar": "Avatar"
+        "avatar": "Avatar",
+        "of": "of"
+    },
+    "limit": {
+        "alarm": "Límite diario",
+        "used": "Usado",
+        "limit-exceeded": "Limite diario excedido"
     }
 }

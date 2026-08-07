@@ -36,6 +36,16 @@
             </span>
         </div>
 
+        <!-- LABEL ABOUT AMOUNT -->
+        <div class="text-sm text-text/60" v-if="limitIsExceeded">
+            {{ t('limit.alarm') }} {{ limit }}. {{ t('limit.used') }}
+            {{ searchAmount }} {{ t('common.of') }}
+            {{ limit }}
+        </div>
+        <div class="text-sm text-text/60" v-else>
+            {{ t('limit.limit-exceeded') }}
+        </div>
+
         <!-- Search input -->
         <div
             class="w-full rounded-lg border border-text/30 bg-secondary px-3 py-2 text-text flex items-center gap-2 mt-2"
@@ -52,12 +62,13 @@
                 @keydown.down.prevent="move(1)"
                 @keydown.up.prevent="move(-1)"
                 @keydown.esc.prevent="close"
+                :disabled="limitIsExceeded"
             />
 
             <button
                 type="button"
                 class="shrink-0 rounded-md bg-blue px-4 py-2 text-sm text-white hover:opacity-90 disabled:opacity-50"
-                :disabled="!query.trim()"
+                :disabled="!query.trim() || limitIsExceeded"
                 @click="search"
             >
                 {{ t('actions.search') }}
@@ -118,7 +129,7 @@
                 </div>
 
                 <div v-else-if="!hasSearched" class="px-3 py-4 text-text/60">
-                    {{ t('folder.enterChannelAndSearch') }}
+                    {{ t('folder.chooseChannels') }}
                 </div>
             </div>
 
@@ -147,16 +158,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import type { IChannel, IYoutubeChannelOption } from '@/types'
+import { computed, onBeforeUnmount, onMounted, ref, watch, inject } from 'vue'
+import { useI18n } from '#imports'
 
+import type { IChannel, IYoutubeChannelOption } from '@/types'
+import { CONTEXT_SEARCH_AMOUNT_KEY } from '~/static'
+
+const config = useRuntimeConfig()
+
+const limit = config.public.searchesPerProjectPerDay
+
+const { searchAmount } = inject(CONTEXT_SEARCH_AMOUNT_KEY) as {
+    searchAmount: Ref<string>
+}
 const props = defineProps<{
     options: IYoutubeChannelOption[]
     modelValue: IChannel[]
 }>()
 
 const emit = defineEmits<{
-    (e: 'update:modelValue', value: IChannel[]): void
+    (e: 'update:modelValue', value: IChannel[] | string): void
     (e: 'update:query', value: string): void
 }>()
 
@@ -170,6 +191,10 @@ const query = ref('')
 const searchQuery = ref('')
 const hasSearched = ref(false)
 const highlightedIndex = ref(0)
+
+const limitIsExceeded = computed(() => {
+    return Number(searchAmount.value) >= Number(limit)
+})
 
 const filteredOptions = computed(() => {
     if (!hasSearched.value) {
@@ -241,7 +266,7 @@ function toggle(id: string) {
         if (!selectedOption) {
             return
         }
-
+        // @ts-ignore
         emit('update:modelValue', [...props.modelValue, selectedOption])
     }
 

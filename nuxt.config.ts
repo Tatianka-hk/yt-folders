@@ -28,6 +28,7 @@ export default defineNuxtConfig({
 
         public: {
             appUrl: '',
+            searchesPerProjectPerDay: 10,
         },
     },
 })

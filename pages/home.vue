@@ -13,32 +13,47 @@
             v-else
             class="w-full h-full flex gap-[40px] relative lg:flex-row flex-col"
         >
-            <FoldersList @selected="selectedChannelsIds = $event" />
+            <FoldersList
+                @selected="selectedChannelsIds = $event"
+                @searched="getSearchAmount"
+            />
             <VideoGrid :channelIds="selectedChannelsIds" />
         </div>
     </div>
 </template>
 <script setup lang="ts">
 import type { IChannel } from '~/types'
+import { useCustomRoute } from '~/composables/useCustomRoute'
+import { useAuth } from '~/composables/useAuth'
+import { getUserAmountSearch } from '~/apis/user'
+import { CONTEXT_SEARCH_AMOUNT_KEY } from '~/static'
 import { Logo, Loading } from '../ui'
 import { FoldersList, VideoGrid, LanguageInput } from '../components'
 import { LogoutButton } from '../components/auth'
-import { useCustomRoute } from '~/composables/useCustomRoute'
-import { useAuth } from '~/composables/useAuth'
 
-const { isAuthLoading, isAuth, fetchAuth } = useAuth()
+const { isAuthLoading, isAuth } = useAuth()
 const { goToRoute } = useCustomRoute()
 
-// onMounted(async () => {
-//     await fetchAuth()
-// })
+const searchAmount = ref<number>(0)
+const selectedChannelsIds = ref<IChannel[]>([])
+
+const getSearchAmount = () => {
+    setTimeout(() => {
+        getUserAmountSearch().then((v) => (searchAmount.value = v.amount))
+    }, 5000)
+}
+
+provide(CONTEXT_SEARCH_AMOUNT_KEY, {
+    searchAmount,
+})
+
+onMounted(async () => {
+    getSearchAmount()
+})
 
 watch(isAuthLoading, (v) => {
-    console.log('asdas')
     if (!isAuth.value && !isAuthLoading.value) {
         goToRoute('login')
     }
 })
-
-const selectedChannelsIds = ref<IChannel[]>([])
 </script>
