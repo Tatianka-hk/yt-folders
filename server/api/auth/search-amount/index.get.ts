@@ -1,5 +1,5 @@
+import { searchQuotaRepository } from '~/server/reposentories/searchQuota.repository'
 import connectDB from '../../../utils/db'
-import { userRepository } from '~/server/reposentories/user'
 
 export default defineEventHandler(async (event) => {
     try {
@@ -12,9 +12,10 @@ export default defineEventHandler(async (event) => {
             })
         }
 
-        const searchAmount: number = await userRepository.getUserAmountSearch(
-            event.context.userId
-        )
+        const searchAmount: number =
+            await searchQuotaRepository.getUserAmountSearch(
+                event.context.userId
+            )
 
         return { amount: searchAmount }
     } catch (err: any) {

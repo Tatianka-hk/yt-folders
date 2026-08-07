@@ -129,6 +129,8 @@
     "limit": {
         "alarm": "Límite diario",
         "used": "Usado",
-        "limit-exceeded": "Limite diario excedido"
+        "limit-exceeded": "Limite diario excedido",
+        "why": "Why is there a limit?",
+        "explanation": "This is a pet project using YouTube's free API, which has a daily request limit. That's why we limit the number of searches per day."
     }
 }
