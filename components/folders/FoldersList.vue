@@ -14,6 +14,7 @@
             :closeDialog="closeDialog"
             v-if="isOpen"
             @changed="getUserFolders"
+            @searched="onSearch"
         />
         <ul
             class="mt-4 flex lg:flex-col gap-2 lg:overflow-y-auto h-full w-full relative overflow-x-auto"
@@ -29,6 +30,7 @@
                 <DropDownMenuFolder
                     :folderId="folder._id"
                     @changed="getUserFolders"
+                    @searched="onSearch"
                 />
             </li>
         </ul>
@@ -36,20 +38,31 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import type { IFolder } from '~/types'
+import { useI18n } from '#imports'
+
+import type { IChannel, IFolder } from '~/types'
 import { IconFolder } from '@/assets/icons'
-import DropDownMenuFolder from './DropDownMenuFolder.vue'
 import { useDialog } from '~/composables/useDialog'
 import { VButton } from '~/ui'
 import FolderDialog from './FolderDialog.vue'
 import { getFolders } from '~/apis/folders'
+import DropDownMenuFolder from './DropDownMenuFolder.vue'
 
 const { t } = useI18n()
 const { isOpen, openDialog, closeDialog } = useDialog()
 const folders = ref<IFolder[]>([])
 
+const emit = defineEmits<{
+    (e: 'selected', val: IChannel[]): void
+    (e: 'searched'): void
+}>()
+
 const getUserFolders = () => {
     getFolders().then((r) => (folders.value = r.folders))
+}
+
+const onSearch = () => {
+    emit('searched')
 }
 
 onMounted(async () => {

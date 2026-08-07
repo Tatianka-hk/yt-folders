@@ -105,7 +105,8 @@
         "cancel": "Cancel·lar",
         "copySuccess": "Targetes copiades correctament",
         "selectFolder": "Selecciona una carpeta",
-        "chooseChannels": "Elige Youtube canales"
+        "chooseChannels": "Elige Youtube canales",
+        "enterChannelAndSearch": "Introduce un canal de Youtube y busca"
     },
     "failedToLoad": "No s'ha pogut carregar",
     "notFound": "No s'ha trobat res",
@@ -122,6 +123,12 @@
     },
     "somethingWentWrong": "Alguna cosa ha anat malament",
     "common": {
-        "avatar": "Avatar"
+        "avatar": "Avatar",
+        "of": "de"
+    },
+    "limit": {
+        "alarm": "Límit diari",
+        "used": "Usat",
+        "limit-exceeded": "Limite diari excedit"
     }
 }

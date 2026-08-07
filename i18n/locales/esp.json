@@ -99,7 +99,8 @@
         "cancel": "Cancelar",
         "copySuccess": "Tarjetas copiadas correctamente",
         "selectFolder": "Selecciona una carpeta",
-        "chooseChannels": "Elige Youtube canales"
+        "chooseChannels": "Elige Youtube canales",
+        "enterChannelAndSearch": "Introduce un canal de Youtube y busca"
     },
     "menu": {
         "buttons": {
@@ -122,6 +123,12 @@
     },
     "somethingWentWrong": "Algo salió mal",
     "common": {
-        "avatar": "Avatar"
+        "avatar": "Avatar",
+        "of": "de"
+    },
+    "limit": {
+        "alarm": "Límite diario",
+        "used": "Usado",
+        "limit-exceeded": "Limite diario excedido"
     }
 }

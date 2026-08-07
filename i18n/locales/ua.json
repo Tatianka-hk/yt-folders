@@ -98,7 +98,8 @@
         "cancel": "Скасувати",
         "copySuccess": "Флеш-картки успішно скопійовані",
         "selectFolder": "Оберіть папку",
-        "chooseChannels": "Оберіть будь ласка Youtube канали"
+        "chooseChannels": "Оберіть будь ласка Youtube канали",
+        "enterChannelAndSearch": "Введи назву каналу і "
     },
     "menu": {
         "buttons": {
@@ -121,6 +122,12 @@
     },
     "somethingWentWrong": "Щось пішло не так",
     "common": {
-        "avatar": "Аватар"
+        "avatar": "Аватар",
+        "of": "з"
+    },
+    "limit": {
+        "alarm": "Ліміт на день",
+        "used": "Використано",
+        "limit-exceeded": "Ліміт на день перевищено"
     }
 }
