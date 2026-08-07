@@ -37,7 +37,7 @@
         </div>
 
         <!-- LABEL ABOUT AMOUNT -->
-        <div class="text-sm text-text/60" v-if="limitIsExceeded">
+        <div class="text-sm text-text/60" v-if="!limitIsExceeded">
             {{ t('limit.alarm') }} {{ limit }}. {{ t('limit.used') }}
             {{ searchAmount }} {{ t('common.of') }}
             {{ limit }}
@@ -68,7 +68,7 @@
             <button
                 type="button"
                 class="shrink-0 rounded-md bg-blue px-4 py-2 text-sm text-white hover:opacity-90 disabled:opacity-50"
-                :disabled="!query.trim() || limitIsExceeded"
+                :disabled="!query.trim() || limitIsExceeded || isLoading"
                 @click="search"
             >
                 {{ t('actions.search') }}
@@ -76,6 +76,7 @@
         </div>
 
         <!-- Dropdown -->
+        <Loading v-if="isLoading" />
         <div
             v-if="opened"
             class="absolute z-20 mt-2 w-full rounded-lg border border-text/30 bg-secondary shadow-lg overflow-hidden"
@@ -163,6 +164,7 @@ import { useI18n } from '#imports'
 
 import type { IChannel, IYoutubeChannelOption } from '@/types'
 import { CONTEXT_SEARCH_AMOUNT_KEY } from '~/static'
+import { Loading } from '@/ui'
 
 const config = useRuntimeConfig()
 
@@ -174,6 +176,7 @@ const { searchAmount } = inject(CONTEXT_SEARCH_AMOUNT_KEY) as {
 const props = defineProps<{
     options: IYoutubeChannelOption[]
     modelValue: IChannel[]
+    isLoading: boolean
 }>()
 
 const emit = defineEmits<{

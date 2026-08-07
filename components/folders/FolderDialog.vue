@@ -11,6 +11,7 @@
                 @update:query="onSearch"
                 v-model="selectedChannels"
                 :options="results"
+                :isLoading="loading"
             />
 
             <VButton @click="save" class="mt-4 !bg-secondary">
