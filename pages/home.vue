@@ -38,9 +38,9 @@ const searchAmount = ref<number>(0)
 const selectedChannelsIds = ref<IChannel[]>([])
 
 const getSearchAmount = () => {
-    setTimeout(() => {
-        getUserAmountSearch().then((v) => (searchAmount.value = v.amount))
-    }, 5000)
+    getUserAmountSearch()
+        .then((v) => (searchAmount.value = v.amount))
+        .catch((err) => console.error('Помилка запиту:', err))
 }
 
 provide(CONTEXT_SEARCH_AMOUNT_KEY, {

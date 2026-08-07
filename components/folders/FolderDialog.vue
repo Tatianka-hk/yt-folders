@@ -91,7 +91,6 @@ const save = async () => {
 
 const onSearch = (e: string) => {
     query.value = e
-    emit('searched')
 }
 onMounted(async () => {
     isLoading.value = true
@@ -107,4 +106,11 @@ onMounted(async () => {
         isLoading.value = false
     }
 })
+
+watch(
+    () => loading.value,
+    (v) => {
+        emit('searched')
+    }
+)
 </script>
