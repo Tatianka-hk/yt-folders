@@ -129,6 +129,8 @@
     "limit": {
         "alarm": "Límit diari",
         "used": "Usat",
-        "limit-exceeded": "Limite diari excedit"
+        "limit-exceeded": "Limite diari excedit",
+        "why": "Per què hi ha un límit?",
+        "explanation": "Aquest és un projecte personal que utilitza l'API gratuïta de YouTube, que té un límit diari de sol·licituds. Per això limitem el nombre de cerques per dia."
     }
 }

@@ -129,6 +129,8 @@
     "limit": {
         "alarm": "Límite diario",
         "used": "Usado",
-        "limit-exceeded": "Límite diario excedido"
+        "limit-exceeded": "Límite diario excedido",
+        "why": "¿Por qué hay un límite?",
+        "explanation": "Este es un proyecto personal que utiliza la API gratuita de YouTube, que tiene un límite diario de solicitudes. Por eso limitamos el número de búsquedas por día."
     }
 }

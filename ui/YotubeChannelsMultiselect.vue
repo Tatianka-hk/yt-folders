@@ -46,6 +46,15 @@
             {{ t('limit.limit-exceeded') }}
         </div>
 
+        <Tooltip>
+            <template #trigger
+                ><div class="text-text/40 text-xs">
+                    {{ t('limit.why') }}
+                </div>
+            </template>
+            <template #content> {{ t('limit.explanation') }} </template>
+        </Tooltip>
+
         <!-- Search input -->
         <div
             class="w-full rounded-lg border border-text/30 bg-secondary px-3 py-2 text-text flex items-center gap-2 mt-2"
@@ -81,7 +90,7 @@
             v-if="opened"
             class="absolute z-20 mt-2 w-full rounded-lg border border-text/30 bg-secondary shadow-lg overflow-hidden"
         >
-            <div class="max-h-[260px] overflow-y-auto">
+            <div class="max-h-[200px] overflow-y-auto">
                 <button
                     v-for="(opt, idx) in filteredOptions"
                     :key="opt.id"
