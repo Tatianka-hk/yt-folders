@@ -10,10 +10,22 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: '#33202a',
+                // Main page background
                 background: '#0d0d12',
-                secondary: '#5f5566',
-                text: '#f4f4f9',
+
+                // Main text: titles, labels, important content
+                text: '#f1f1f5',
+
+                // Primary actions: Create, LOgin, Save
+                primary: '#33202a',
+
+                // Secondary actions: Sign up
+                secondary: '#262633',
+
+                primaryHover: '#402936',
+                secondaryHover: '#323242',
+                primaryDisabled: '#1a1518',
+                secondaryDisabled: '#181820',
             },
             fontFamily: {
                 julius: ['"Julius Sans One"', 'sans-serif'],

@@ -22,7 +22,7 @@
                     'py-2 px-4 cursor-pointer',
                     dialogMode
                         ? 'bg-blue hover:bg-[#cfdae6]'
-                        : ' bg-primary hover:bg-thirty',
+                        : ' bg-primary hover:bg-primaryHover',
                 ]"
                 @click="onOptionClick(option.value)"
             >
