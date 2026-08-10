@@ -30,7 +30,17 @@
                 />
                 <VideoGrid :channelIds="selectedChannelsIds" />
             </div>
-            <div v-else></div>
+            <div
+                v-else
+                class="w-full h-full flex flex-col items-center justify-center"
+            >
+                <h1 class="text-4xl text-text">
+                    {{ t('emptyFolders.title') }}
+                </h1>
+                <p class="text-lg text-text">
+                    {{ t('emptyFolders.description') }}
+                </p>
+            </div>
         </div>
     </div>
 </template>
@@ -58,6 +68,7 @@ const selectedFolderId = useState<string | null>(
     'home-selected-folder',
     () => null
 )
+const { t } = useI18n()
 
 const selectedChannelsIds = computed(() => {
     const folder = folders.value.find((f) => f._id === selectedFolderId.value)

@@ -166,5 +166,9 @@
                 "description": "No limits. No complications."
             }
         }
+    },
+    "emptyFolders": {
+        "title": "No folders yet",
+        "description": "To start using the app, create your first folder."
     }
 }

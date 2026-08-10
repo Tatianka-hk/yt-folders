@@ -166,5 +166,9 @@
                 "description": "Sense límits. Sense complicacions."
             }
         }
+    },
+    "emptyFolders": {
+        "title": "Encara no tens carpetes",
+        "description": "Per començar a utilitzar l'aplicació, crea la teva primera carpeta."
     }
 }
