@@ -5,11 +5,11 @@
         <div
             class="flex flex-col items-center text-center gap-4 mx-auto w-[80%] lg:w-[700px] mb-[40px]"
         >
-            <h1 class="text-2xl font-semibold">
+            <h1 class="text-2xl font-semibold text-text">
                 {{ title }}
             </h1>
 
-            <p class="text-base">
+            <p class="text-base text-text">
                 {{ description }}
             </p>
         </div>

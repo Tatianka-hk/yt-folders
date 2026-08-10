@@ -1,6 +1,6 @@
 <template>
     <div class="w-full flex flex-col items-center justify-center">
-        <Logo class="mt-[80px] mb-[40px] mx-auto" />
+        <Logo class="mt-[80px] mb-[40px] mx-auto" :size="Size.medium" />
 
         <div
             class="flex flex-col gap-4 mx-auto w-[80%] lg:w-[700px] mb-[40px] space-y-2"
@@ -41,6 +41,7 @@ import { useAuth } from '~/composables/useAuth'
 import { LOGIN_ERRORS } from '~/static/auth'
 import PleaseVerifyEmail from '~/components/auth/PleaseVerifyEmail.vue'
 import { useCustomRoute } from '~/composables/useCustomRoute'
+import { Size } from '~/types'
 
 const { showSnackbar } = useSnackbar()
 const { t } = useI18n()

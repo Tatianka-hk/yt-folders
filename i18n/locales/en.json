@@ -130,5 +130,41 @@
         "limit-exceeded": "Limite diario excedido",
         "why": "Why is there a limit?",
         "explanation": "This is a pet project using YouTube's free API, which has a daily request limit. That's why we limit the number of searches per day."
+    },
+    "landing": {
+        "badge": "Simple. Fast. Personal.",
+        "description": "Organize your YouTube videos into folders and keep your content always within reach.",
+        "register": "Sign up for free",
+        "steps": {
+            "create": {
+                "title": "Create folders",
+                "description": "Organize your videos however you like."
+            },
+            "search": {
+                "title": "Search and save",
+                "description": "Find videos and save them to your folders."
+            },
+            "watch": {
+                "title": "Enjoy",
+                "description": "Access your content whenever you need it."
+            }
+        },
+        "preview": {
+            "favorites": "My favorites"
+        },
+        "benefits": {
+            "private": {
+                "title": "Safe and private",
+                "description": "Only you have access to your folders and videos."
+            },
+            "devices": {
+                "title": "From any device",
+                "description": "Use YouTube Carpets on mobile, tablet, or PC."
+            },
+            "simple": {
+                "title": "Made for you",
+                "description": "No limits. No complications."
+            }
+        }
     }
 }
