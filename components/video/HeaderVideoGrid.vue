@@ -41,6 +41,8 @@
     </div>
 </template>
 <script setup lang="ts">
+import { useDialog, useI18n } from '#imports'
+
 import { IconFolder, IconEdit, IconDelete } from '@/assets/icons'
 import { deleteFolder } from '~/apis/folders'
 import { FolderDialogEnum } from '~/types'
@@ -49,7 +51,11 @@ import FolderDialog from '../folders/FolderDialog.vue'
 
 const props = defineProps<{ title: string; folderId: string }>()
 
-const emit = defineEmits(['changed', 'searched', 'deleted'])
+const emit = defineEmits<{
+    (e: 'changed'): void
+    (e: 'searched'): void
+    (e: 'deleted'): void
+}>()
 const { t } = useI18n()
 
 const {

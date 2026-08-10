@@ -4,7 +4,7 @@
             <LanguageInput />
             <LogoutButton />
         </div>
-        <div className="w-full flex items-center justify-center">
+        <div class="w-full flex items-center justify-center">
             <Logo />
         </div>
         <div class="w-full w-screen flex items-center justify-end"></div>
@@ -14,22 +14,19 @@
             class="w-full h-full flex gap-[40px] relative lg:flex-row flex-col"
         >
             <FoldersList
-                @selected="selectedFolderID = $event"
+                @selected="selectedFolderId = $event"
                 @searched="getSearchAmount"
                 @changed="getUserFolders"
                 :folders="folders"
-                :selectedFolderID="selectedFolderID as string"
+                :selectedFolderId="selectedFolderId as string"
             />
-            <div class="w-full" v-if="selectedFolderID">
+            <div class="w-full" v-if="selectedFolderId">
                 <HeaderVideoGrid
-                    :title="
-                        folders.find((f) => f._id === selectedFolderID)?.name ||
-                        ''
-                    "
-                    :folderId="selectedFolderID"
+                    :title="selectedFolderTitle"
+                    :folderId="selectedFolderId"
                     @changed="getUserFolders"
                     @searched="getSearchAmount"
-                    @deleted="updateFolders"
+                    @deleted="refreshFoldersAndSelectFirst"
                 />
                 <VideoGrid :channelIds="selectedChannelsIds" />
             </div>
@@ -57,29 +54,41 @@ const { isAuthLoading, isAuth } = useAuth()
 const { goToRoute } = useCustomRoute()
 const folders = ref<IFolder[]>([])
 const searchAmount = ref<number>(0)
-const selectedFolderID = useState<string | null>(
+const selectedFolderId = useState<string | null>(
     'home-selected-folder',
     () => null
 )
 
 const selectedChannelsIds = computed(() => {
-    const folder = folders.value.find((f) => f._id === selectedFolderID.value)
+    const folder = folders.value.find((f) => f._id === selectedFolderId.value)
     return folder?.youtubeChannelsIDs || []
 })
 
+const selectedFolderTitle = computed(() => {
+    const folder = folders.value.find((f) => f._id === selectedFolderId.value)
+    return folder?.name || ''
+})
+
 const getSearchAmount = async () => {
-    getUserAmountSearch()
-        .then((v) => (searchAmount.value = v.amount))
-        .catch((err) => console.error('Помилка запиту:', err))
+    try {
+        const res = await getUserAmountSearch()
+        searchAmount.value = res.amount
+    } catch (err) {
+        console.error('Помилка запиту:', err)
+    }
 }
 const getUserFolders = async () => {
-    const res = await getFolders()
-    folders.value = res.folders
+    try {
+        const res = await getFolders()
+        folders.value = res.folders
+    } catch (err) {
+        console.error('Помилка запиту:', err)
+    }
 }
 
-const updateFolders = async () => {
+const refreshFoldersAndSelectFirst = async () => {
     await getUserFolders()
-    selectedFolderID.value = folders?.value?.[0]?._id ?? null
+    selectedFolderId.value = folders.value?.[0]?._id ?? null
 }
 
 provide(CONTEXT_SEARCH_AMOUNT_KEY, {
@@ -88,12 +97,16 @@ provide(CONTEXT_SEARCH_AMOUNT_KEY, {
 
 onMounted(async () => {
     await getSearchAmount()
-    await updateFolders()
+    await refreshFoldersAndSelectFirst()
 })
 
-watch(isAuthLoading, (v) => {
-    if (!isAuth.value && !isAuthLoading.value) {
-        goToRoute('login')
-    }
-})
+watch(
+    [isAuthLoading, isAuth],
+    ([loading, authenticated]) => {
+        if (!loading && !authenticated) {
+            goToRoute('login')
+        }
+    },
+    { immediate: true }
+)
 </script>

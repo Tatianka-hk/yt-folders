@@ -29,7 +29,7 @@
                 @click="onSelectFolder(folder._id)"
                 v-for="folder in folders"
                 :key="folder._id"
-                :class="['flex items-center gap-2 py-4 px-4 cursor-pointer h-fit hover:primaryHover', folder._id === selectedFolderID ? ' bg-primary' : ''].join(' ')"
+                :class="['flex items-center gap-2 py-4 px-4 cursor-pointer h-fit hover:primaryHover', folder._id === selectedFolderId ? ' bg-primary' : ''].join(' ')"
             >
                 <IconFolder class="text-text"/>
                 <span class="text-text text-base">{{ folder.name }}</span>
@@ -38,7 +38,6 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useI18n } from '#imports'
 
 import { IconFolder, IconPlus } from '@/assets/icons'
@@ -52,7 +51,7 @@ const { isOpen, openDialog, closeDialog } = useDialog()
 
 const props = defineProps<{
     folders: IFolder[]
-    selectedFolderID: string
+    selectedFolderId: string
 }>()
 const emit = defineEmits<{
     (e: 'selected', id: string): void

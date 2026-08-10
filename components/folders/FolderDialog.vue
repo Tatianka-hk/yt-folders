@@ -28,9 +28,8 @@
 import { onMounted, ref } from 'vue'
 import { Dialog, Field, YotubeChannelsMultiselect } from '~/ui'
 import { useSnackbar } from '~/composables/useSnackbar'
-import type { IAction, IChannel, IYoutubeChannelOption } from '~/types'
+import type { IAction, IChannel } from '~/types'
 import { FolderDialogEnum } from '~/types'
-import { getYoutubeChannels } from '~/apis/youtube'
 import { createFolder, getFolder, updateFolder } from '~/apis/folders'
 import { useYoutubeChannelSearch } from '~/composables/useYoutubeChannelSearch'
 import { useI18n } from '#imports'
@@ -50,8 +49,6 @@ const { t } = useI18n()
 const { showSnackbar } = useSnackbar()
 const folderName = ref<string>('')
 const selectedChannels = ref<IChannel[]>([])
-const youtubeChannels = ref<IYoutubeChannelOption[]>([])
-const isLoading = ref<boolean>(false)
 const emit = defineEmits<{
     (e: 'changed'): void
     (e: 'searched'): void
@@ -93,17 +90,14 @@ const onSearch = (e: string) => {
     query.value = e
 }
 onMounted(async () => {
-    isLoading.value = true
     try {
-        const channels = await getYoutubeChannels()
-        youtubeChannels.value = channels
         if (props.mode === FolderDialogEnum.UPDATE) {
             const res = await getFolder(props.folderId as string)
             folderName.value = res.folder?.name
             selectedChannels.value = res.folder?.youtubeChannelsIDs
         }
-    } finally {
-        isLoading.value = false
+    } catch (e) {
+        console.error(e)
     }
 })
 
