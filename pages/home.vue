@@ -14,36 +14,72 @@
             class="w-full h-full flex gap-[40px] relative lg:flex-row flex-col"
         >
             <FoldersList
-                @selected="selectedChannelsIds = $event"
+                @selected="selectedFolderID = $event"
                 @searched="getSearchAmount"
+                @changed="getUserFolders"
+                :folders="folders"
+                :selectedFolderID="selectedFolderID as string"
             />
-            <VideoGrid :channelIds="selectedChannelsIds" />
+            <div class="w-full" v-if="selectedFolderID">
+                <HeaderVideoGrid
+                    :title="
+                        folders.find((f) => f._id === selectedFolderID)?.name ||
+                        ''
+                    "
+                    :folderId="selectedFolderID"
+                    @changed="getUserFolders"
+                    @searched="getSearchAmount"
+                    @deleted="updateFolders"
+                />
+                <VideoGrid :channelIds="selectedChannelsIds" />
+            </div>
+            <div v-else></div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
-import type { IChannel } from '~/types'
+import type { IFolder } from '~/types'
 import { useCustomRoute } from '~/composables/useCustomRoute'
 import { useAuth } from '~/composables/useAuth'
 import { getUserAmountSearch } from '~/apis/user'
 import { CONTEXT_SEARCH_AMOUNT_KEY } from '~/static'
-import { Logo, Loading } from '../ui'
-import { FoldersList, VideoGrid, LanguageInput } from '../components'
 import { LogoutButton } from '../components/auth'
+import { getFolders } from '~/apis/folders'
+import {
+    FoldersList,
+    VideoGrid,
+    LanguageInput,
+    HeaderVideoGrid,
+} from '../components'
+import { Logo, Loading } from '../ui'
 
 const { isAuthLoading, isAuth } = useAuth()
 const { goToRoute } = useCustomRoute()
-
+const folders = ref<IFolder[]>([])
 const searchAmount = ref<number>(0)
-const selectedChannelsIds = useState<IChannel[]>(
-    'home-selected-channels',
-    () => []
+const selectedFolderID = useState<string | null>(
+    'home-selected-folder',
+    () => null
 )
 
-const getSearchAmount = () => {
+const selectedChannelsIds = computed(() => {
+    const folder = folders.value.find((f) => f._id === selectedFolderID.value)
+    return folder?.youtubeChannelsIDs || []
+})
+
+const getSearchAmount = async () => {
     getUserAmountSearch()
         .then((v) => (searchAmount.value = v.amount))
         .catch((err) => console.error('Помилка запиту:', err))
+}
+const getUserFolders = async () => {
+    const res = await getFolders()
+    folders.value = res.folders
+}
+
+const updateFolders = async () => {
+    await getUserFolders()
+    selectedFolderID.value = folders?.value?.[0]?._id ?? null
 }
 
 provide(CONTEXT_SEARCH_AMOUNT_KEY, {
@@ -51,7 +87,8 @@ provide(CONTEXT_SEARCH_AMOUNT_KEY, {
 })
 
 onMounted(async () => {
-    getSearchAmount()
+    await getSearchAmount()
+    await updateFolders()
 })
 
 watch(isAuthLoading, (v) => {

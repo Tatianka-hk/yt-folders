@@ -77,10 +77,6 @@
             }
         }
     },
-    "dropdown": {
-        "edit": "Editar",
-        "delete": "Eliminar"
-    },
     "menu": {
         "buttons": {
             "addFolder": "Afegir una carpeta",
@@ -88,10 +84,12 @@
         }
     },
     "actions": {
-        "create": "Crear",
+        "create": "Crear carpeta",
         "clear": "Esborrar",
         "done": "Fet",
-        "search": "Cerca"
+        "search": "Cerca",
+        "edit": "Editar carpeta",
+        "delete": "Eliminar carpeta"
     },
     "folder": {
         "folders": "Carpetes",

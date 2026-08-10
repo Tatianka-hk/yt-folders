@@ -78,14 +78,12 @@
         }
     },
     "actions": {
-        "create": "Create",
+        "create": "Create folder",
         "clear": "Clear",
         "done": "Done",
-        "search": "Search"
-    },
-    "dropdown": {
-        "edit": "Edit",
-        "delete": "Delete"
+        "search": "Search",
+        "edit": "Edit folder",
+        "delete": "Delete folder"
     },
     "menu": {
         "buttons": {

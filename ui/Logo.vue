@@ -2,7 +2,7 @@
     <div
         :class="
             [
-                'text-text w-full flex justify-center items-center font-bold',
+                'text-text w-full flex justify-center items-center font-semibold',
                 clasProps,
                 size === Size.small
                     ? 'text-2xl'

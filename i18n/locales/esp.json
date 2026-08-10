@@ -78,14 +78,12 @@
         }
     },
     "actions": {
-        "create": "Crear",
+        "create": "Crear carpeta",
         "clear": "Limpiar",
         "done": "Hecho",
-        "search": "Buscar"
-    },
-    "dropdown": {
-        "edit": "Editar",
-        "delete": "Eliminar"
+        "search": "Buscar",
+        "edit": "Editar carpeta",
+        "delete": "Eliminar carpeta"
     },
     "folder": {
         "folders": "Carpetas",
