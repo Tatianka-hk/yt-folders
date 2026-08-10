@@ -1,6 +1,6 @@
 <template>
     <div class="w-full flex flex-col items-center justify-center">
-        <Logo class="mt-[80px] mb-[40px] mx-auto" />
+        <Logo class="mt-[80px] mb-[40px] mx-auto" :size="Size.medium" />
 
         <template v-if="etap === ETAP_ENUM.SIGNUP">
             <div
@@ -49,6 +49,7 @@ import { registerUser } from '~/apis/auth'
 import { Field, Logo, VButton, Loading } from '~/ui'
 import EndOfSignup from '~/components/auth/EndOfSignup.vue'
 import { useSnackbar } from '../composables/useSnackbar'
+import { Size } from '~/types'
 
 const { showSnackbar } = useSnackbar()
 const { t, locale } = useI18n()

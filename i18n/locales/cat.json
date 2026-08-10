@@ -130,5 +130,41 @@
         "limit-exceeded": "Limite diari excedit",
         "why": "Per què hi ha un límit?",
         "explanation": "Aquest és un projecte personal que utilitza l'API gratuïta de YouTube, que té un límit diari de sol·licituds. Per això limitem el nombre de cerques per dia."
+    },
+    "landing": {
+        "badge": "Simple. Ràpid. Personal.",
+        "description": "Organitza els teus vídeos de YouTube en carpetes i tingues sempre el teu contingut a mà.",
+        "register": "Registra't gratis",
+        "steps": {
+            "create": {
+                "title": "Crea carpetes",
+                "description": "Organitza els teus vídeos com vulguis."
+            },
+            "search": {
+                "title": "Cerca i desa",
+                "description": "Troba vídeos i desa'ls a les teves carpetes."
+            },
+            "watch": {
+                "title": "Gaudeix",
+                "description": "Accedeix al teu contingut sempre que el necessitis."
+            }
+        },
+        "preview": {
+            "favorites": "Els meus preferits"
+        },
+        "benefits": {
+            "private": {
+                "title": "Segur i privat",
+                "description": "Només tu tens accés a les teves carpetes i vídeos."
+            },
+            "devices": {
+                "title": "Des de qualsevol dispositiu",
+                "description": "Utilitza YouTube Carpets al mòbil, la tauleta o el PC."
+            },
+            "simple": {
+                "title": "Fet per a tu",
+                "description": "Sense límits. Sense complicacions."
+            }
+        }
     }
 }

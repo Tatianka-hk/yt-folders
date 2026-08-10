@@ -130,5 +130,44 @@
         "limit-exceeded": "Límite diario excedido",
         "why": "¿Por qué hay un límite?",
         "explanation": "Este es un proyecto personal que utiliza la API gratuita de YouTube, que tiene un límite diario de solicitudes. Por eso limitamos el número de búsquedas por día."
+    },
+    "landing": {
+        "badge": "Simple. Rápido. Personal.",
+        "description": "Organiza tus vídeos de YouTube en carpetas y ten tu contenido siempre a mano.",
+        "register": "Registrarse gratis",
+
+        "steps": {
+            "create": {
+                "title": "Crea carpetas",
+                "description": "Organiza tus vídeos como quieras."
+            },
+            "search": {
+                "title": "Busca y guarda",
+                "description": "Encuentra vídeos y guárdalos en tus carpetas."
+            },
+            "watch": {
+                "title": "Disfruta",
+                "description": "Accede a tu contenido cuando lo necesites."
+            }
+        },
+
+        "preview": {
+            "favorites": "Mis favoritos"
+        },
+
+        "benefits": {
+            "private": {
+                "title": "Seguro y privado",
+                "description": "Solo tú tienes acceso a tus carpetas y vídeos."
+            },
+            "devices": {
+                "title": "Desde cualquier dispositivo",
+                "description": "Usa YouTube Carpets en móvil, tablet o PC."
+            },
+            "simple": {
+                "title": "Hecho para ti",
+                "description": "Sin límites. Sin complicaciones."
+            }
+        }
     }
 }

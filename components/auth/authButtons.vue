@@ -2,7 +2,7 @@
     <!-- add hover -->
     <UserCircle v-if="isAuthorized" />
 
-    <div class="flex flex-col gap-2" v-else>
+    <div class="flex flex-col gap-2 w-[200px] hidden lg:flex" v-else>
         <VButton :onClick="() => goToRoute('login')" extraClass="!py-2">
             {{ t('auth.actions.login') }}
         </VButton>
