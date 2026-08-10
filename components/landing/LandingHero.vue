@@ -9,7 +9,7 @@
         <h1
             class="text-[35px] font-bold uppercase leading-[0.95] tracking-tight sm:text-6xl"
         >
-            YouTube Carpets
+            YT Folders
         </h1>
 
         <p

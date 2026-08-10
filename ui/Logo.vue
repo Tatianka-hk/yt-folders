@@ -12,7 +12,7 @@
             ].join(' ')
         "
     >
-        YOUTUBE CARPETS
+        YT FOLDERS
     </div>
 </template>
 <script setup lang="ts">

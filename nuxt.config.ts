@@ -31,4 +31,16 @@ export default defineNuxtConfig({
             searchesPerProjectPerDay: 10,
         },
     },
+    app: {
+        head: {
+            title: 'YT Folders',
+            link: [
+                {
+                    rel: 'icon',
+                    type: 'image/png',
+                    href: '/favicon.png',
+                },
+            ],
+        },
+    },
 })
