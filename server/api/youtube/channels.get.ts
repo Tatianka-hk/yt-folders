@@ -1,5 +1,7 @@
 import { defineEventHandler, getQuery, createError } from 'h3'
 import { searchQuotaRepository } from '~/server/reposentories/searchQuota.repository'
+import { trackUserEvent } from '~/server/services/analyticsService'
+import { EVENTS } from '~/static/analytic'
 import connectDB from '~/server/utils/db'
 import type { IYoutubeChannelOption } from '~/types'
 
@@ -61,6 +63,16 @@ export default defineEventHandler(async (event) => {
                 Number(maxResults ?? DEFAULT_MAX_RESULTS),
                 apiKey
             )
+
+            await trackUserEvent({
+                userId: userId,
+                email: event.context.email,
+                type: EVENTS.CHANNEL_SEARCH,
+                data: {
+                    query: searchQuery,
+                    resultsCount: channelIds.length,
+                },
+            })
             if (!channelIds.length) return []
 
             return await fetchAndMapChannelDetails(channelIds, apiKey)

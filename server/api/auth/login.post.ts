@@ -1,8 +1,10 @@
 import { User } from '~/server/models/User'
 import { LOGIN_ERRORS } from '~/static/auth'
 import { UserStatusEnum } from '~/static/user'
-import connectDB from './../../utils/db'
+import { trackUserEvent } from '~/server/services/analyticsService'
+import { EVENTS } from '~/static/analytic'
 import { hashPassword, limitLoginAttempts } from './utils'
+import connectDB from './../../utils/db'
 import { signJwt, setSessionCookie } from './../../utils/jwt'
 
 export default defineEventHandler(async (event) => {
@@ -58,9 +60,16 @@ export default defineEventHandler(async (event) => {
             }
         }
         if (existingUser && existingUser.password === hashedPassword) {
-            const token = signJwt({ uid: String(existingUser._id) })
+            const token = signJwt({
+                uid: String(existingUser._id),
+                email: existingUser.email,
+            })
             setSessionCookie(event, token)
-
+            await trackUserEvent({
+                userId: existingUser._id.toString(),
+                email: existingUser.email,
+                type: EVENTS.LOGIN,
+            })
             return { success: true, message: 'User is authorized' }
         } else {
             setResponseStatus(event, 401, LOGIN_ERRORS.INCORRECT_CREDERNTIALS)

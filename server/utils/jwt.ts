@@ -11,6 +11,7 @@ if (!JWT_SECRET) {
 
 export interface JwtPayload {
     uid: string
+    email: string
 }
 
 export function signJwt(payload: JwtPayload) {
