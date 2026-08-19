@@ -1,13 +1,11 @@
-import { EmailTemplateParams, escapeHtml } from '~/server/utils/emails'
+import { EmailTemplateParams, getEmailTranslation } from '~/server/utils/emails'
 
 export function buildVerificationEmailTemplate({
     locale,
-    verificationLink,
+    link,
 }: EmailTemplateParams) {
     const t = (key: string) =>
         getEmailTranslation(locale, `email.verify-email.${key}`)
-
-    const safeVerificationLink = escapeHtml(verificationLink)
 
     const subject = t('subject')
 
@@ -16,12 +14,12 @@ ${t('welcome')}
 
 ${t('description')}
 
-${verificationLink}
+${link}
 
 ${t('expires')}
 
 ${t('fallback')}
-${verificationLink}
+${link}
     `.trim()
 
     const html = `

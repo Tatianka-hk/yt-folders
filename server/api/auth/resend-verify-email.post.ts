@@ -2,6 +2,8 @@ import connectDB from '~/server/utils/db'
 import { User } from '~/server/models/User'
 import { VerificationToken } from '~/server/models/VerificationToken'
 import { UserStatusEnum } from '~/static/user'
+import { verifyEmail } from '~/server/utils/emails'
+import { TOKEN_TYPE } from '~/static/auth'
 
 type ResendVerifyEmailBody = {
     email?: string
@@ -48,15 +50,11 @@ export default defineEventHandler(async (event) => {
 
     await VerificationToken.deleteMany({
         userId: user._id,
+        type: TOKEN_TYPE.EMAIL_VERIFICATION,
     })
 
     try {
-        await verifyEmail({
-            userId: user._id,
-            email: user.email as string,
-            locale: locale ?? 'en',
-            event,
-        })
+        await verifyEmail(user._id, user.email as string, locale ?? 'en', event)
     } catch (error) {
         console.error('Resend verification email error:', error)
 

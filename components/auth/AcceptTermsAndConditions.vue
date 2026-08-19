@@ -29,7 +29,7 @@
     </label>
 </template>
 <script setup lang="ts">
-import { useI18n } from '#imports'
+import { useCustomRoute, useI18n } from '#imports'
 const { goToRoute } = useCustomRoute()
 const { t } = useI18n()
 

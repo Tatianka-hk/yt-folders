@@ -68,6 +68,47 @@
                 "error": "No se ha podido enviar el correo. Inténtalo de nuevo."
             }
         },
+        "reset_password": {
+            "title": "Restablecer contraseña",
+            "description": "Introduce tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+            "submit": "Enviar enlace",
+            "success": "Hemos enviado un enlace para restablecer tu contraseña a tu correo electrónico.",
+            "not_received": "¿No has recibido el correo?",
+            "resend": "Enviar de nuevo",
+            "back_to_login": "Volver al inicio de sesión",
+            "errors": {
+                "USER_NOT_FOUND": "No hemos encontrado ninguna cuenta con este correo electrónico.",
+                "INVALID_EMAIL": "Introduce una dirección de correo electrónico válida.",
+                "default": "Algo ha salido mal. Inténtalo de nuevo."
+            },
+            "email": {
+                "subject": "Restablece tu contraseña de ytCarpets",
+                "title": "Restablece tu contraseña",
+                "welcome": "Hemos recibido una solicitud para restablecer tu contraseña.",
+                "description": "Haz clic en el botón de abajo para establecer una nueva contraseña para tu cuenta de ytCarpets.",
+                "button": "Restablecer contraseña",
+                "expires": "Por motivos de seguridad, este enlace tiene un tiempo de validez limitado.",
+                "fallback": "Si el botón no funciona, copia y pega este enlace en tu navegador:",
+                "ignore": "Si no has solicitado restablecer tu contraseña, puedes ignorar este correo."
+            }
+        },
+        "reset_password_change": {
+            "title": "Crea una nueva contraseña",
+            "description": "Introduce tu nueva contraseña a continuación.",
+            "password": "Nueva contraseña",
+            "confirm_password": "Confirmar nueva contraseña",
+            "submit": "Cambiar contraseña",
+            "success": "Tu contraseña se ha cambiado correctamente.",
+            "to_login": "Ir al inicio de sesión",
+            "errors": {
+                "not_match": "Las contraseñas no coinciden.",
+                "PASSWORD_TOO_SHORT": "La contraseña debe tener al menos 8 caracteres.",
+                "INVALID_OR_EXPIRED_TOKEN": "Este enlace para restablecer la contraseña no es válido o ha caducado.",
+                "TOKEN_AND_PASSWORD_REQUIRED": "Falta el enlace de restablecimiento o la contraseña.",
+                "default": "Algo ha salido mal. Inténtalo de nuevo."
+            }
+        },
+
         "login": {
             "errors": {
                 "incorrect_credentials": "Credenciales incorrectas",
@@ -81,7 +122,8 @@
             "terms": "Términos de uso",
             "and": "y la",
             "privacy": "Política de privacidad"
-        }
+        },
+        "forgot_password": "¿Olvidaste tu contraseña?"
     },
     "actions": {
         "create": "Crear carpeta",

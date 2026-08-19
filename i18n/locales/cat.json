@@ -76,12 +76,53 @@
                 "something_went_wrong": "Alguna cosa ha anat malament."
             }
         },
+        "reset_password": {
+            "title": "Restablir la contrasenya",
+            "description": "Introdueix el teu correu electrònic i t’enviarem un enllaç per restablir la contrasenya.",
+            "submit": "Enviar l’enllaç",
+            "success": "Hem enviat un enllaç per restablir la contrasenya al teu correu electrònic.",
+            "not_received": "No has rebut el correu?",
+            "resend": "Tornar a enviar",
+            "back_to_login": "Tornar a l’inici de sessió",
+            "errors": {
+                "USER_NOT_FOUND": "No hem trobat cap compte amb aquest correu electrònic.",
+                "INVALID_EMAIL": "Introdueix una adreça de correu electrònic vàlida.",
+                "default": "Alguna cosa ha anat malament. Torna-ho a provar."
+            },
+            "email": {
+                "subject": "Restableix la contrasenya de ytCarpets",
+                "title": "Restableix la contrasenya",
+                "welcome": "Hem rebut una sol·licitud per restablir la teva contrasenya.",
+                "description": "Fes clic al botó de sota per establir una nova contrasenya per al teu compte de ytCarpets.",
+                "button": "Restablir la contrasenya",
+                "expires": "Per motius de seguretat, aquest enllaç té un temps de validesa limitat.",
+                "fallback": "Si el botó no funciona, copia i enganxa aquest enllaç al navegador:",
+                "ignore": "Si no has sol·licitat restablir la contrasenya, pots ignorar aquest correu."
+            }
+        },
+        "reset_password_change": {
+            "title": "Crea una contrasenya nova",
+            "description": "Introdueix la teva nova contrasenya a continuació.",
+            "password": "Contrasenya nova",
+            "confirm_password": "Confirma la contrasenya nova",
+            "submit": "Canviar la contrasenya",
+            "success": "La teva contrasenya s'ha canviat correctament.",
+            "to_login": "Anar a l'inici de sessió",
+            "errors": {
+                "not_match": "Les contrasenyes no coincideixen.",
+                "PASSWORD_TOO_SHORT": "La contrasenya ha de tenir almenys 8 caràcters.",
+                "INVALID_OR_EXPIRED_TOKEN": "Aquest enllaç per restablir la contrasenya no és vàlid o ha caducat.",
+                "TOKEN_AND_PASSWORD_REQUIRED": "Falta l'enllaç de restabliment o la contrasenya.",
+                "default": "Alguna cosa ha anat malament. Torna-ho a provar."
+            }
+        },
         "policy": {
             "prefix": "Accepto les",
             "terms": "Condicions d’ús",
             "and": "i la",
             "privacy": "Política de privacitat"
-        }
+        },
+        "forgot_password": "Has oblidat la contrasenya?"
     },
     "menu": {
         "buttons": {
