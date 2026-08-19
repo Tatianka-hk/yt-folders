@@ -58,6 +58,7 @@ import EndOfSignup from '~/components/auth/EndOfSignup.vue'
 import { Size } from '~/types'
 import AcceptTermsAndConditions from '~/components/auth/AcceptTermsAndConditions.vue'
 import { useSnackbar } from '../composables/useSnackbar'
+import { isValidEmail, isValidPassword } from '~/utils/auth'
 
 const { showSnackbar } = useSnackbar()
 const { t, locale } = useI18n()
@@ -73,14 +74,6 @@ enum ETAP_ENUM {
     VERIFY = 'verify',
 }
 const etap = ref<ETAP_ENUM>(ETAP_ENUM.SIGNUP)
-
-function isValidEmail(email: string): boolean {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-}
-
-function isValidPassword(password: string): boolean {
-    return /^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(password)
-}
 
 const onClick = () => {
     if (!isValidEmail(email.value)) {

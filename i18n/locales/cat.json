@@ -217,5 +217,18 @@
     "emptyFolders": {
         "title": "Encara no tens carpetes",
         "description": "Per començar a utilitzar l'aplicació, crea la teva primera carpeta."
+    },
+    "support": {
+        "title": "Contactar amb suport",
+        "description": "Explica’ns el teu problema i ens posarem en contacte amb tu al més aviat possible.",
+        "email": "Correu electrònic",
+        "message": "Missatge",
+        "messagePlaceholder": "Descriu el teu problema...",
+        "submit": "Enviar missatge",
+        "sending": "Enviant...",
+        "success": "El teu missatge s’ha enviat correctament.",
+        "error": "Alguna cosa ha anat malament. Torna-ho a provar.",
+        "fieldsRequired": "Si us plau, completa tots els camps.",
+        "userNotFound": "No hem trobat cap compte amb aquest correu electrònic."
     }
 }

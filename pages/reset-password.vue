@@ -71,6 +71,7 @@
 import { ref } from 'vue'
 import { useI18n } from '#imports'
 
+import { isValidEmail } from '~/utils/auth'
 import { resetPassword } from '~/apis/auth'
 import { Field, Logo, VButton, Loading } from '~/ui'
 import { useSnackbar } from '~/composables/useSnackbar'
@@ -87,6 +88,10 @@ const isSuccess = ref(false)
 
 const onSubmit = async () => {
     if (!email.value || isLoading.value) {
+        return
+    }
+    if (!isValidEmail(email.value)) {
+        showSnackbar(t('auth.errors.email_invalid'), 'error')
         return
     }
 

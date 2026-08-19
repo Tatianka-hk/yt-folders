@@ -69,6 +69,7 @@ export const verifyEmail = async (
             locale: locale as AppLocale,
             link: verificationLink,
         })
+        console.log(template)
 
         return sendEmail({
             event: event!,

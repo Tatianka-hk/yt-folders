@@ -24,10 +24,6 @@
                 :label="t('auth.reset_password_change.confirm_password')"
                 v-model="confirmPassword"
             />
-
-            <p v-if="passwordsDoNotMatch" class="text-sm text-red-500">
-                {{ t('auth.reset_password_change.errors.not_match') }}
-            </p>
         </div>
 
         <div v-if="isLoading">
@@ -63,14 +59,14 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useRoute, useI18n } from '#imports'
+import { useRoute } from '#imports'
 
 import { Logo, Field, VButton, Loading } from '~/ui'
 import { Size } from '~/types'
 import { useSnackbar } from '~/composables/useSnackbar'
 import { useCustomRoute } from '~/composables/useCustomRoute'
 import { PASSWORD_MIN_LENGTH } from '~/static/auth'
-
+import { isValidPassword } from '~/utils/auth'
 const { t } = useI18n()
 const route = useRoute()
 const { showSnackbar } = useSnackbar()
@@ -87,27 +83,27 @@ const token = computed(() => {
     return typeof value === 'string' ? value : ''
 })
 
-const passwordsDoNotMatch = computed(() => {
-    if (!password.value || !confirmPassword.value) {
-        return false
-    }
-
-    return password.value !== confirmPassword.value
-})
-
 const isSubmitDisabled = computed(() => {
     return (
         !token.value ||
         !password.value ||
         !confirmPassword.value ||
         password.value.length < PASSWORD_MIN_LENGTH ||
-        passwordsDoNotMatch.value ||
         isLoading.value
     )
 })
 
 const onSubmit = async () => {
     if (isSubmitDisabled.value) {
+        return
+    }
+
+    if (!isValidPassword(password.value)) {
+        showSnackbar(t('auth.errors.password_invalid'), 'error')
+        return
+    }
+    if (confirmPassword.value !== password.value) {
+        showSnackbar(t('auth.errors.password_mismatch'), 'error')
         return
     }
 

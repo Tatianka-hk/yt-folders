@@ -217,5 +217,18 @@
     "emptyFolders": {
         "title": "No folders yet",
         "description": "To start using the app, create your first folder."
+    },
+    "support": {
+        "title": "Contact support",
+        "description": "Tell us about your problem and we will get back to you as soon as possible.",
+        "email": "Email",
+        "message": "Message",
+        "messagePlaceholder": "Describe your problem...",
+        "submit": "Send message",
+        "sending": "Sending...",
+        "success": "Your message has been sent successfully.",
+        "error": "Something went wrong. Please try again.",
+        "fieldsRequired": "Please fill in all fields.",
+        "userNotFound": "No account was found with this email."
     }
 }

@@ -221,5 +221,18 @@
     "emptyFolders": {
         "title": "Aún no tienes carpetas",
         "description": "Para empezar a usar la aplicación, crea tu primera carpeta."
+    },
+    "support": {
+        "title": "Contactar con soporte",
+        "description": "Cuéntanos tu problema y nos pondremos en contacto contigo lo antes posible.",
+        "email": "Correo electrónico",
+        "message": "Mensaje",
+        "messagePlaceholder": "Describe tu problema...",
+        "submit": "Enviar mensaje",
+        "sending": "Enviando...",
+        "success": "Tu mensaje se ha enviado correctamente.",
+        "error": "Algo ha salido mal. Inténtalo de nuevo.",
+        "fieldsRequired": "Por favor, completa todos los campos.",
+        "userNotFound": "No hemos encontrado ninguna cuenta con este correo electrónico."
     }
 }
