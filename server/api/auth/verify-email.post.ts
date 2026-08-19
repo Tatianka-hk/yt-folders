@@ -2,7 +2,8 @@ import connectDB from '~/server/utils/db'
 import { User } from '~/server/models/User'
 import { VerificationToken } from '~/server/models/VerificationToken'
 import { UserStatusEnum } from '~/static/user'
-import { getTokenHash } from '~/server/utils/verify_email'
+import { getTokenHash } from '~/server/utils/emails'
+import { TOKEN_TYPE } from '~/static/auth'
 
 type VerifyEmailBody = {
     token?: string
@@ -28,6 +29,7 @@ export default defineEventHandler(async (event) => {
 
     const verificationToken = await VerificationToken.findOne({
         token: hashedToken,
+        type: TOKEN_TYPE.EMAIL_VERIFICATION,
     })
 
     if (!verificationToken) {
@@ -46,6 +48,7 @@ export default defineEventHandler(async (event) => {
     ) {
         await VerificationToken.deleteOne({
             _id: verificationToken._id,
+            type: TOKEN_TYPE.EMAIL_VERIFICATION,
         })
 
         throw createError({

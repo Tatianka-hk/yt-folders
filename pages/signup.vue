@@ -25,11 +25,18 @@
                     v-model="confirmPassword"
                 />
             </div>
+            <AcceptTermsAndConditions v-model="acceptedPolicy" />
             <div v-if="isLoading">
                 <Loading />
             </div>
             <VButton
-                :disabled="!email || !password || !confirmPassword || isLoading"
+                :disabled="
+                    !email ||
+                    !password ||
+                    !confirmPassword ||
+                    isLoading ||
+                    !acceptedPolicy
+                "
                 :onClick="onClick"
                 :ariaLabel="t('auth.actions.signup')"
             >
@@ -48,8 +55,9 @@ import { useI18n } from '#imports'
 import { registerUser } from '~/apis/auth'
 import { Field, Logo, VButton, Loading } from '~/ui'
 import EndOfSignup from '~/components/auth/EndOfSignup.vue'
-import { useSnackbar } from '../composables/useSnackbar'
 import { Size } from '~/types'
+import AcceptTermsAndConditions from '~/components/auth/AcceptTermsAndConditions.vue'
+import { useSnackbar } from '../composables/useSnackbar'
 
 const { showSnackbar } = useSnackbar()
 const { t, locale } = useI18n()
@@ -57,6 +65,7 @@ const { t, locale } = useI18n()
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
+const acceptedPolicy = ref(false)
 const isLoading = ref<boolean>(false)
 
 enum ETAP_ENUM {

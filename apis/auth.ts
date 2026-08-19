@@ -53,3 +53,10 @@ export function resendVerification(data: { email: string; locale?: string }) {
         data: data,
     })
 }
+
+export const resetPassword = (data: { email: string; locale?: string }) => {
+    return $fetch('/api/auth/reset-password', {
+        method: 'POST',
+        body: data,
+    })
+}

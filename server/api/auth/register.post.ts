@@ -1,8 +1,10 @@
 import { isError } from 'h3'
 
 import { User } from '~/server/models/User'
-import { verifyEmail } from '~/server/utils/verify_email'
+import { verifyEmail } from '~/server/utils/emails'
 import connectDB from '~/server/utils/db'
+import { trackUserEvent } from '~/server/services/analyticsService'
+import { EVENTS } from '~/static/analytic'
 import { hashPassword } from './utils'
 
 export default defineEventHandler(async (event) => {
@@ -42,7 +44,11 @@ export default defineEventHandler(async (event) => {
         })
 
         await verifyEmail(newUser._id, email, locale, event)
-
+        await trackUserEvent({
+            userId: newUser._id.toString(),
+            email,
+            type: EVENTS.REGISTER,
+        })
         return { success: true, message: 'User registered' }
     } catch (err: any) {
         if (isError(err)) {

@@ -5,3 +5,10 @@ export enum LOGIN_ERRORS {
     TOKEN_EXPIRED = 'token_expired',
     SOMETHING_WENT_WRONG = 'something_went_wrong',
 }
+
+export enum TOKEN_TYPE {
+    RESET_PASSWORD = 'reset_password',
+    EMAIL_VERIFICATION = 'email_verification',
+}
+
+export const PASSWORD_MIN_LENGTH = 6

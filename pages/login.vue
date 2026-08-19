@@ -17,10 +17,12 @@
                 :label="t('auth.labels.password')"
                 v-model="password"
             />
+            <ForgotPassword />
         </div>
         <div v-if="isLoading">
             <Loading />
         </div>
+
         <VButton
             :ariaLabel="t('auth.actions.login')"
             :disabled="!email || !password || isLoading"
@@ -42,6 +44,7 @@ import { LOGIN_ERRORS } from '~/static/auth'
 import PleaseVerifyEmail from '~/components/auth/PleaseVerifyEmail.vue'
 import { useCustomRoute } from '~/composables/useCustomRoute'
 import { Size } from '~/types'
+import ForgotPassword from '~/components/auth/ForgotPassword.vue'
 
 const { showSnackbar } = useSnackbar()
 const { t } = useI18n()

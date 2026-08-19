@@ -1,11 +1,9 @@
-import { randomBytes } from 'node:crypto'
-
 import connectDB from '~/server/utils/db'
 import { User } from '~/server/models/User'
 import { VerificationToken } from '~/server/models/VerificationToken'
-import { sendVerificationEmail } from '~/server/utils/send_email'
-import { TOKEN_EXPIRES_MS, UserStatusEnum } from '~/static/user'
-import { getTokenHash } from '~/server/utils/verify_email'
+import { UserStatusEnum } from '~/static/user'
+import { verifyEmail } from '~/server/utils/emails'
+import { TOKEN_TYPE } from '~/static/auth'
 
 type ResendVerifyEmailBody = {
     email?: string
@@ -50,34 +48,14 @@ export default defineEventHandler(async (event) => {
         }
     }
 
-    const verificationToken = randomBytes(32).toString('hex')
-
-    const hashedToken = getTokenHash(verificationToken)
-
     await VerificationToken.deleteMany({
         userId: user._id,
-    })
-
-    await VerificationToken.create({
-        userId: user._id,
-        token: hashedToken,
-        createdAt: new Date(),
-        expiresAt: new Date(Date.now() + TOKEN_EXPIRES_MS),
+        type: TOKEN_TYPE.EMAIL_VERIFICATION,
     })
 
     try {
-        await sendVerificationEmail({
-            email: user.email as string,
-            verificationToken,
-            locale: locale ?? 'en',
-            event,
-        })
+        await verifyEmail(user._id, user.email as string, locale ?? 'en', event)
     } catch (error) {
-        await VerificationToken.deleteOne({
-            userId: user._id,
-            token: hashedToken,
-        })
-
         console.error('Resend verification email error:', error)
 
         throw createError({
