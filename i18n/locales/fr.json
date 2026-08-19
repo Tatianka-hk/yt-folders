@@ -1,0 +1,234 @@
+{
+    "auth": {
+        "labels": {
+            "email": "E-mail",
+            "password": "Mot de passe",
+            "confirm_password": "Confirmer le mot de passe"
+        },
+        "actions": {
+            "login": "Se connecter",
+            "signup": "S’inscrire",
+            "login_google": "Se connecter avec Google",
+            "forgot": "Mot de passe oublié ?"
+        },
+        "errors": {
+            "email_invalid": "Saisissez une adresse e-mail valide.",
+            "email_exists": "Cette adresse e-mail est déjà enregistrée.",
+            "password_mismatch": "Les mots de passe ne correspondent pas.",
+            "password_invalid": "Le mot de passe doit contenir au moins 1 lettre et 1 chiffre.",
+            "invalid_credentials": "Adresse e-mail ou mot de passe incorrect.",
+            "too_many_attempts": "Trop de tentatives. Veuillez réessayer plus tard.",
+            "something_went_wrong": "Une erreur s’est produite.",
+            "password_too_short": "Le mot de passe doit contenir au moins 6 caractères."
+        },
+        "success": {
+            "signup": "Compte créé.",
+            "login": "Connexion réussie."
+        },
+        "info": {
+            "reset_sent": "Si cette adresse e-mail existe, nous avons envoyé les instructions de réinitialisation."
+        },
+        "verify_email": {
+            "notVerified": {
+                "title": "E-mail non vérifié",
+                "description": "Vous devez vérifier votre e-mail pour vous connecter."
+            },
+            "loading": {
+                "title": "Vérification de votre e-mail",
+                "description": "Veuillez patienter pendant que nous vérifions votre lien."
+            },
+            "success": {
+                "title": "E-mail vérifié",
+                "description": "Votre adresse e-mail a été vérifiée avec succès. Vous pouvez maintenant vous connecter à votre compte.",
+                "snackbar": "Votre e-mail a été vérifié avec succès."
+            },
+            "error": {
+                "title": "Échec de la vérification de l’e-mail",
+                "description": "Le lien a peut-être expiré ou a déjà été utilisé. Veuillez réessayer.",
+                "snackbar": "Nous n’avons pas pu vérifier votre e-mail."
+            },
+            "invalid_token": {
+                "title": "Lien de vérification invalide",
+                "description": "Le jeton de vérification est manquant. Vérifiez le lien dans votre e-mail."
+            },
+            "actions": {
+                "retry": "Réessayer",
+                "verifying": "Vérification...",
+                "login": "Se connecter"
+            },
+            "sent": {
+                "title": "Consultez votre e-mail",
+                "description": "Nous vous avons envoyé un e-mail contenant un lien de vérification. Ouvrez-le et confirmez votre adresse e-mail."
+            },
+            "resend": {
+                "button": "Renvoyer l’e-mail",
+                "sending": "Envoi...",
+                "available_in": "Renvoyer dans {seconds}s",
+                "success": "Un nouvel e-mail de vérification a été envoyé.",
+                "error": "Nous n’avons pas pu envoyer l’e-mail. Veuillez réessayer."
+            }
+        },
+        "login": {
+            "errors": {
+                "incorrect_credentials": "Identifiants incorrects",
+                "email_not_verified": "Votre e-mail n’est pas vérifié",
+                "too_many_requests": "Trop de requêtes. Veuillez réessayer plus tard.",
+                "something_went_wrong": "Une erreur s’est produite."
+            }
+        },
+        "policy": {
+            "prefix": "J’accepte les",
+            "terms": "Conditions d’utilisation",
+            "and": "et",
+            "privacy": "Politique de confidentialité"
+        },
+        "forgot_password": "Mot de passe oublié ?",
+        "reset_password": {
+            "title": "Réinitialisez votre mot de passe",
+            "description": "Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+            "submit": "Envoyer le lien de réinitialisation",
+            "success": "Nous avons envoyé un lien de réinitialisation du mot de passe à votre adresse e-mail.",
+            "not_received": "Vous n’avez pas reçu l’e-mail ?",
+            "resend": "Le renvoyer",
+            "back_to_login": "Retour à la connexion",
+            "errors": {
+                "USER_NOT_FOUND": "Aucun compte associé à cette adresse e-mail n’a été trouvé.",
+                "INVALID_EMAIL": "Veuillez saisir une adresse e-mail valide.",
+                "default": "Une erreur s’est produite. Veuillez réessayer."
+            },
+            "email": {
+                "subject": "Réinitialisez votre mot de passe ytCarpets",
+                "title": "Réinitialisez votre mot de passe",
+                "welcome": "Nous avons reçu une demande de réinitialisation de votre mot de passe.",
+                "description": "Cliquez sur le bouton ci-dessous pour choisir un nouveau mot de passe pour votre compte ytCarpets.",
+                "button": "Réinitialiser le mot de passe",
+                "expires": "Ce lien expirera pour des raisons de sécurité.",
+                "fallback": "Si le bouton ne fonctionne pas, copiez et collez ce lien dans votre navigateur :",
+                "ignore": "Si vous n’avez pas demandé la réinitialisation de votre mot de passe, vous pouvez ignorer cet e-mail."
+            }
+        },
+        "reset_password_change": {
+            "title": "Créer un nouveau mot de passe",
+            "description": "Saisissez votre nouveau mot de passe ci-dessous.",
+            "password": "Nouveau mot de passe",
+            "confirm_password": "Confirmer le nouveau mot de passe",
+            "submit": "Modifier le mot de passe",
+            "success": "Votre mot de passe a été modifié avec succès.",
+            "to_login": "Aller à la connexion",
+            "errors": {
+                "not_match": "Les mots de passe ne correspondent pas.",
+                "PASSWORD_TOO_SHORT": "Votre mot de passe doit contenir au moins 8 caractères.",
+                "INVALID_OR_EXPIRED_TOKEN": "Ce lien de réinitialisation du mot de passe est invalide ou a expiré.",
+                "TOKEN_AND_PASSWORD_REQUIRED": "Le lien de réinitialisation ou le mot de passe est manquant.",
+                "default": "Une erreur s’est produite. Veuillez réessayer."
+            }
+        }
+    },
+    "actions": {
+        "create": "Créer un dossier",
+        "clear": "Effacer",
+        "done": "Terminé",
+        "search": "Rechercher",
+        "edit": "Modifier le dossier",
+        "delete": "Supprimer le dossier"
+    },
+    "menu": {
+        "buttons": {
+            "addFolder": "Ajouter un dossier",
+            "logout": "Se déconnecter"
+        }
+    },
+    "folder": {
+        "folders": "Dossiers",
+        "edit": "Modifier le dossier",
+        "create": "Créer un dossier",
+        "name": "Nom du dossier",
+        "nameError": "Le nom du dossier doit contenir au moins 3 caractères",
+        "editSuccess": "Dossier modifié avec succès",
+        "createSuccess": "Dossier créé avec succès",
+        "selected": "Sélectionné",
+        "cancel": "Annuler",
+        "copySuccess": "Flashcards copiées avec succès",
+        "selectFolder": "Sélectionner un dossier",
+        "chooseChannels": "Choisir des chaînes YouTube",
+        "enterChannelAndSearch": "Saisissez une chaîne et "
+    },
+    "failedToLoad": "Échec du chargement",
+    "notFound": "Aucun résultat",
+    "email": {
+        "verify-email": {
+            "subject": "Vérifiez votre e-mail",
+            "title": "Vérifiez votre e-mail",
+            "welcome": "Bienvenue !",
+            "description": "Merci d’avoir créé un compte. Veuillez confirmer votre adresse e-mail.",
+            "button": "Vérifier l’e-mail",
+            "expires": "Ce lien expire dans 24 heures.",
+            "fallback": "Si le bouton ne fonctionne pas, copiez et ouvrez ce lien :"
+        }
+    },
+    "somethingWentWrong": "Une erreur s’est produite",
+    "common": {
+        "avatar": "Avatar",
+        "of": "sur"
+    },
+    "limit": {
+        "alarm": "Limite quotidienne",
+        "used": "Utilisé",
+        "limit-exceeded": "Limite quotidienne dépassée",
+        "why": "Pourquoi y a-t-il une limite ?",
+        "explanation": "Il s’agit d’un projet personnel utilisant l’API gratuite de YouTube, qui impose une limite quotidienne de requêtes. C’est pourquoi nous limitons le nombre de recherches par jour."
+    },
+    "landing": {
+        "badge": "Simple. Rapide. Personnel.",
+        "description": "Organisez vos vidéos YouTube dans des dossiers et gardez toujours votre contenu à portée de main.",
+        "register": "S’inscrire gratuitement",
+        "steps": {
+            "create": {
+                "title": "Créez des dossiers",
+                "description": "Organisez vos vidéos comme vous le souhaitez."
+            },
+            "search": {
+                "title": "Recherchez et enregistrez",
+                "description": "Trouvez des vidéos et enregistrez-les dans vos dossiers."
+            },
+            "watch": {
+                "title": "Profitez",
+                "description": "Accédez à votre contenu quand vous en avez besoin."
+            }
+        },
+        "preview": {
+            "favorites": "Mes favoris"
+        },
+        "benefits": {
+            "private": {
+                "title": "Sûr et privé",
+                "description": "Vous seul avez accès à vos dossiers et à vos vidéos."
+            },
+            "devices": {
+                "title": "Depuis n’importe quel appareil",
+                "description": "Utilisez YouTube Carpets sur mobile, tablette ou PC."
+            },
+            "simple": {
+                "title": "Conçu pour vous",
+                "description": "Sans limites. Sans complications."
+            }
+        }
+    },
+    "emptyFolders": {
+        "title": "Aucun dossier pour le moment",
+        "description": "Pour commencer à utiliser l’application, créez votre premier dossier."
+    },
+    "support": {
+        "title": "Contacter le support",
+        "description": "Décrivez-nous votre problème et nous vous répondrons dès que possible.",
+        "email": "E-mail",
+        "message": "Message",
+        "messagePlaceholder": "Décrivez votre problème...",
+        "submit": "Envoyer le message",
+        "sending": "Envoi...",
+        "success": "Votre message a été envoyé avec succès.",
+        "error": "Une erreur s’est produite. Veuillez réessayer.",
+        "fieldsRequired": "Veuillez remplir tous les champs.",
+        "userNotFound": "Aucun compte associé à cette adresse e-mail n’a été trouvé."
+    }
+}

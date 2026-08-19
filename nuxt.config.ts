@@ -15,6 +15,7 @@ export default defineNuxtConfig({
             { code: 'ua', file: 'ua.json' },
             { code: 'esp', file: 'esp.json' },
             { code: 'cat', file: 'cat.json' },
+            { code: 'fr', file: 'fr.json' },
         ],
         defaultLocale: 'ua',
         langDir: 'locales/',

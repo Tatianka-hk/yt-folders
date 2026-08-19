@@ -3,6 +3,7 @@ export const langs = [
     { value: 'ua', label: 'Українська' },
     { value: 'esp', label: 'Español' },
     { value: 'cat', label: 'Catalan' },
+    { value: 'fr', label: 'Français' },
 ]
 
 export const STORAGE_KEY = 'ytf-lang'

@@ -11,9 +11,10 @@ import ua from '~/i18n/locales/ua.json'
 import en from '~/i18n/locales/en.json'
 import esp from '~/i18n/locales/esp.json'
 import cat from '~/i18n/locales/cat.json'
+import fr from '~/i18n/locales/fr.json'
 import { TOKEN_TYPE } from '~/static/auth'
 
-export type AppLocale = 'ua' | 'en' | 'esp' | 'cat'
+export type AppLocale = 'ua' | 'en' | 'esp' | 'cat' | 'fr'
 type TranslationValue = string | Record<string, unknown>
 
 export interface EmailTemplateParams {
@@ -26,6 +27,7 @@ const translations = {
     en,
     esp,
     cat,
+    fr,
 } as const
 
 export function escapeHtml(value: string): string {
@@ -69,7 +71,6 @@ export const verifyEmail = async (
             locale: locale as AppLocale,
             link: verificationLink,
         })
-        console.log(template)
 
         return sendEmail({
             event: event!,
@@ -103,7 +104,8 @@ export function normalizeLocale(locale?: string): AppLocale {
 
         case 'cat':
             return 'cat'
-
+        case 'fr':
+            return 'fr'
         case 'en':
 
         default:
