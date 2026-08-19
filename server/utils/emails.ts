@@ -1,9 +1,29 @@
-import { createHash, randomBytes } from 'node:crypto'
+import { createHash, randomBytes } from 'crypto'
 import { Types } from 'mongoose'
 
 import { TOKEN_EXPIRES_MS } from '~/static/user'
 import { VerificationToken } from '../models/VerificationToken'
-import { sendVerificationEmail } from './send_email'
+
+export interface EmailTemplateParams {
+    locale: AppLocale
+    verificationLink: string
+}
+
+export function escapeHtml(value: string): string {
+    return value
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;')
+}
+
+export const getTokenHash = (token: string) => {
+    const salt = process.env.PASSWORD_SALT
+    return createHash('sha256')
+        .update(token + salt)
+        .digest('hex')
+}
 
 export const verifyEmail = async (
     userId: Types.ObjectId,
@@ -36,11 +56,4 @@ export const verifyEmail = async (
         })
         console.error(error)
     }
-}
-
-export const getTokenHash = (token: string) => {
-    const salt = process.env.PASSWORD_SALT
-    return createHash('sha256')
-        .update(token + salt)
-        .digest('hex')
 }

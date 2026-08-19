@@ -1,7 +1,7 @@
 import { isError } from 'h3'
 
 import { User } from '~/server/models/User'
-import { verifyEmail } from '~/server/utils/verify_email'
+import { verifyEmail } from '~/server/utils/emails'
 import connectDB from '~/server/utils/db'
 import { trackUserEvent } from '~/server/services/analyticsService'
 import { EVENTS } from '~/static/analytic'
