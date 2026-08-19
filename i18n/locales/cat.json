@@ -75,6 +75,12 @@
                 "too_many_requests": "Demasiados intentos. Torna-ho a provar més tard.",
                 "something_went_wrong": "Alguna cosa ha anat malament."
             }
+        },
+        "policy": {
+            "prefix": "Accepto les",
+            "terms": "Condicions d’ús",
+            "and": "i la",
+            "privacy": "Política de privacitat"
         }
     },
     "menu": {

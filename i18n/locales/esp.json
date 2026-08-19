@@ -75,6 +75,12 @@
                 "too_many_requests": "Demasiados intentos. Inténtalo de nuevo.",
                 "something_went_wrong": "Algo salió mal."
             }
+        },
+        "policy": {
+            "prefix": "Acepto los",
+            "terms": "Términos de uso",
+            "and": "y la",
+            "privacy": "Política de privacidad"
         }
     },
     "actions": {

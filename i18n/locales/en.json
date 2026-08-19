@@ -75,6 +75,12 @@
                 "too_many_requests": "Too many requests. Please try again later.",
                 "something_went_wrong": "Something went wrong."
             }
+        },
+        "policy": {
+            "prefix": "I agree to the",
+            "terms": "Terms of Use",
+            "and": "and",
+            "privacy": "Privacy Policy"
         }
     },
     "actions": {
