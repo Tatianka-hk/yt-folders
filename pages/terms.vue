@@ -61,7 +61,7 @@ import termsUa from '~/data/terms/ua'
 import termsEn from '~/data/terms/en'
 import termsEs from '~/data/terms/esp'
 import termsCa from '~/data/terms/cat'
-import type esp from '~/data/policy/esp'
+import termFr from '~/data/terms/fr'
 
 const { locale } = useI18n()
 
@@ -70,6 +70,7 @@ const termsByLocale = {
     en: termsEn,
     esp: termsEs,
     cat: termsCa,
+    fr: termFr,
 }
 
 const terms = computed(() => {

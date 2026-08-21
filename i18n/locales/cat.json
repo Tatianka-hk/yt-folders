@@ -116,13 +116,13 @@
                 "default": "Alguna cosa ha anat malament. Torna-ho a provar."
             }
         },
+        "forgot_password": "Has oblidat la contrasenya?",
         "policy": {
             "prefix": "Accepto les",
             "terms": "Condicions d’ús",
             "and": "i la",
             "privacy": "Política de privacitat"
-        },
-        "forgot_password": "Has oblidat la contrasenya?"
+        }
     },
     "menu": {
         "buttons": {

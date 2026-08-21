@@ -108,6 +108,7 @@
                 "default": "Algo ha salido mal. Inténtalo de nuevo."
             }
         },
+        "forgot_password": "¿Olvidaste tu contraseña?",
 
         "login": {
             "errors": {
@@ -122,8 +123,7 @@
             "terms": "Términos de uso",
             "and": "y la",
             "privacy": "Política de privacidad"
-        },
-        "forgot_password": "¿Olvidaste tu contraseña?"
+        }
     },
     "actions": {
         "create": "Crear carpeta",

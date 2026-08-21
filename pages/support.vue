@@ -20,7 +20,7 @@
                 />
 
                 <div class="flex flex-col gap-2">
-                    <label class="text-text">
+                    <label class="text-text text-base">
                         {{ t('support.message') }}
                     </label>
 
@@ -28,13 +28,13 @@
                         v-model="message"
                         :placeholder="t('support.messagePlaceholder')"
                         rows="6"
-                        class="w-full resize-none rounded-lg border border-secondary/30 bg-background px-4 py-3 text-text outline-none focus:border-primary"
+                        class="w-full border border-text/30 bg-secondary py-2 px-4 text-text/60 rounded-lg"
                     />
                 </div>
 
                 <VButton
                     :ariaLabel="t('support.submit')"
-                    :disabled="loading"
+                    :disabled="loading || !email || !message.trim()"
                     :onClick="submit"
                 >
                     {{ loading ? t('support.sending') : t('support.submit') }}

@@ -13,7 +13,7 @@
         </div>
         <ul
             v-if="opened"
-            class="absolute top-full left-0 z-10 mt-1 w-full bg-white border border-text rounded-lg shadow-md max-h-[200px] overflow-y-auto"
+            class="absolute top-full left-0 z-10 mt-1 w-full bg-white border border-text rounded-lg shadow-md max-h-[220px] overflow-y-auto"
         >
             <li
                 v-for="option in options"

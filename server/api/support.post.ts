@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
         })
     }
 
-    if (message.length < 2) {
+    if (message.length < 10) {
         throw createError({
             statusCode: 400,
             statusMessage: 'Message is too short',

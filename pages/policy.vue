@@ -53,6 +53,7 @@ import policyUa from '~/data/policy/ua'
 import policyEn from '~/data/policy/en'
 import policyEs from '~/data/policy/esp'
 import policyCa from '~/data/policy/cat'
+import policyFr from '~/data/policy/fr'
 
 const { locale } = useI18n()
 
@@ -61,6 +62,7 @@ const policyByLocale = {
     en: policyEn,
     esp: policyEs,
     cat: policyCa,
+    fr: policyFr,
 }
 
 const policy = computed(() => {
